@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "864968379382",
+    "project_id": "mobv-semester-project-team3",
+    "storage_bucket": "mobv-semester-project-team3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864968379382:android:88f34bea398763997015d7",
+        "android_client_info": {
+          "package_name": "com.example.semester_project_crypto_wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864968379382-eum9clvmhhr73t89sq9jp75oau7262o9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGLGUV4PgG6N3cW5joXTFEA9rM9hnUh8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864968379382-eum9clvmhhr73t89sq9jp75oau7262o9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
