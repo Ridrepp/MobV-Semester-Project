@@ -2,5 +2,6 @@
     <string name="app_name">Semester-Project-Crypto-Wallet</string>
     <string name="button1">Tlačidlo 1</string>
     <string name="button2">Tlačidlo 2</string>
-    <string name="pairKonto">Konto:</string>
+    <string name="pairKontoPublic"> </string>
+    <string name="pairKontoPrivate"> </string>
 </resources>
