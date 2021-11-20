@@ -1,14 +1,9 @@
-package com.example.semester_project_crypto_wallet
-import android.os.Bundle
-import android.security.keystore.KeyGenParameterSpec
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.semester_project_crypto_wallet.databinding.ActivityMainBinding
-import org.stellar.sdk.KeyPair
+package com.example.semester_project_crypto_wallet.ui
 import android.util.Log
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import org.stellar.sdk.KeyPair
+import java.io.InputStream
+import java.net.URL
+import java.util.*
 
 
 class User() {
