@@ -2,12 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/txFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.semester_project_crypto_wallet.ui.HomeFragment"
         android:label="HomeFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/txFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.viewModels.TxFragment"
+        android:label="TxFragment">
     </fragment>
 
 </navigation>
