@@ -1,28 +1,34 @@
-package com.example.semester_project_crypto_wallet
+package com.example.semester_project_crypto_wallet.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.semester_project_crypto_wallet.databinding.ActivityMainBinding
-import org.stellar.sdk.KeyPair
 import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.semester_project_crypto_wallet.R
+import com.example.semester_project_crypto_wallet.User
+import com.example.semester_project_crypto_wallet.databinding.FragmentHomeBinding
+import com.example.semester_project_crypto_wallet.ui.viewModels.HomeViewModel
+import org.stellar.sdk.KeyPair
 
+class HomeFragment : Fragment() {
+    private val homeViewModel: HomeViewModel by viewModels()
+    private lateinit var binding: FragmentHomeBinding
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_home, container, false
+        )
+        binding.viewModel = homeViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        //return inflater.inflate(R.layout.fragment_home, container, false)
 
         // Changing policy because of response from Stellar server
-        val policy = ThreadPolicy.Builder().permitAll().build()
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
 
@@ -59,9 +65,8 @@ class MainActivity : AppCompatActivity() {
         binding.button2.setOnClickListener{
 
         }
-
+        return binding.root
     }
-
 
 
 
@@ -76,11 +81,4 @@ class MainActivity : AppCompatActivity() {
     private fun createAccount(user: User){
         user.createAccount()
     }
-
-
-
-
-
-
-
 }

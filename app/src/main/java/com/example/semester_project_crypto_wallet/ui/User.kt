@@ -2,18 +2,13 @@ package com.example.semester_project_crypto_wallet
 
 import android.util.Log
 import org.stellar.sdk.*
-import org.stellar.sdk.AbstractTransaction.MIN_BASE_FEE
-import org.stellar.sdk.Transaction
-import java.net.*
-import java.io.*
-import java.util.*
+import org.stellar.sdk.Transaction.Builder
+import org.stellar.sdk.Transaction.MIN_BASE_FEE
 import org.stellar.sdk.responses.AccountResponse
 import org.stellar.sdk.responses.SubmitTransactionResponse
-import org.stellar.sdk.Transaction.Builder
-import org.stellar.sdk.TransactionBuilderAccount
-import org.stellar.sdk.Transaction.MIN_BASE_FEE
-
-import java.lang.Exception
+import java.io.InputStream
+import java.net.URL
+import java.util.*
 
 
 class User() {
