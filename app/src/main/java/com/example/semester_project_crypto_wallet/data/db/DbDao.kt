@@ -21,4 +21,5 @@ interface DbDao {
 
     @Insert
     suspend fun insertReceiver(receiver: Receiver)
+
 }
