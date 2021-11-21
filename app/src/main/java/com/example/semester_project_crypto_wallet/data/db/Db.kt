@@ -1,11 +1,11 @@
-package com.example.semester_project_crypto_wallet.data
+package com.example.semester_project_crypto_wallet.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.semester_project_crypto_wallet.data.entities.Receiver
-import com.example.semester_project_crypto_wallet.data.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 
 @Database(
     entities =

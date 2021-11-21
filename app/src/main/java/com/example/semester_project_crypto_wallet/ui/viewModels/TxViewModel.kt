@@ -2,10 +2,8 @@ package com.example.semester_project_crypto_wallet.ui.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.semester_project_crypto_wallet.User
-import com.example.semester_project_crypto_wallet.data.DbDao
-import com.example.semester_project_crypto_wallet.data.entities.Receiver
-import com.example.semester_project_crypto_wallet.data.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.DbDao
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 import android.util.Log
 
 class TxViewModel (

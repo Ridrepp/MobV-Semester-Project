@@ -1,10 +1,10 @@
-package com.example.semester_project_crypto_wallet.data
+package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.semester_project_crypto_wallet.data.entities.Receiver
-import com.example.semester_project_crypto_wallet.data.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 
 @Dao
 interface DbDao {

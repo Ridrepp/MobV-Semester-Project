@@ -1,17 +1,11 @@
 package com.example.semester_project_crypto_wallet.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.semester_project_crypto_wallet.R
-import com.example.semester_project_crypto_wallet.data.Db
-import com.example.semester_project_crypto_wallet.data.entities.Receiver
-import com.example.semester_project_crypto_wallet.data.entities.Transaction
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {

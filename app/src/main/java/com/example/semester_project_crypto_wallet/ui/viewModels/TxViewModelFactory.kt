@@ -3,7 +3,7 @@ package com.example.semester_project_crypto_wallet.ui.viewModels
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.semester_project_crypto_wallet.data.DbDao
+import com.example.semester_project_crypto_wallet.data.db.DbDao
 
 class TxViewModelFactory(
     private val dataSource: DbDao,

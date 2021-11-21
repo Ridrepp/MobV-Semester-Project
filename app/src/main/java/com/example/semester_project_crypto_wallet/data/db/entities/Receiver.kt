@@ -1,4 +1,4 @@
-package com.example.semester_project_crypto_wallet.data.entities
+package com.example.semester_project_crypto_wallet.data.db.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
