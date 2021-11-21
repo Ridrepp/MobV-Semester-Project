@@ -22,4 +22,13 @@ data class Transaction (
 
     @ColumnInfo(name = "fee")
     var Fee: String
-)
+
+) {
+    override fun toString(): String =
+        "Transaction:\n" +
+        TxID + "\n" +
+        Source + "\n" +
+        Destination + "\n" +
+        Amount + "\n" +
+        Fee + "\n"
+}

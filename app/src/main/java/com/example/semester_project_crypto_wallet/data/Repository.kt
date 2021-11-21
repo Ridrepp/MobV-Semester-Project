@@ -1,36 +1,40 @@
 package com.example.semester_project_crypto_wallet.data
 
 import androidx.annotation.WorkerThread
-import com.example.semester_project_crypto_wallet.data.db.DbDao
+import androidx.lifecycle.LiveData
+import com.example.semester_project_crypto_wallet.data.db.LocalCache
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 
-class Repository(private val dbDao: DbDao) {
-    // Room executes all queries on a separate thread.
-    // Observed Flow will notify the observer when the data has changed.
-//    val allWords: Flow<List<Word>> = wordDao.getAlphabetizedWords()
+class Repository(private val cache: LocalCache) {
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insertTransaction(transaction: Transaction) {
-        dbDao.insertTransaction(transaction)
+    companion object {
+        const val TAG = "Repository"
+        @Volatile
+        private var INSTANCE: Repository? = null
+
+        fun getInstance(cache: LocalCache): Repository =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE
+                    ?: Repository(cache).also { INSTANCE = it }
+            }
     }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insertReceiver(receiver: Receiver) {
-        dbDao.insertReceiver(receiver)
-    }
+//    suspend fun getTransactions() {
+//        cache.getTransactions()
+//    }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun getTransactions() {
-        dbDao.getTransactions()
-    }
+    fun getTransactions(): LiveData<List<Transaction>> = cache.getTransactions()
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
     suspend fun getReceivers() {
-        dbDao.getReceivers()
+        cache.getReceivers()
+    }
+
+    suspend fun insertTransaction(transaction: Transaction) {
+        cache.insertTransaction(transaction)
+    }
+
+    suspend fun insertReceiver(receiver: Receiver) {
+        cache.insertReceiver(receiver)
     }
 }
