@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/txFragment"
-        android:name="com.example.semester_project_crypto_wallet.ui.viewModels.TxFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.transactions.TxFragment"
         android:label="TxFragment">
     </fragment>
 

@@ -1,4 +1,4 @@
-package com.example.semester_project_crypto_wallet.ui.viewModels
+package com.example.semester_project_crypto_wallet.ui.transactions
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

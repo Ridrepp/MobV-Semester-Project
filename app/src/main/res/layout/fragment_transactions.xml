@@ -6,7 +6,7 @@
     <data>
         <variable
             name="txViewModel"
-            type="com.example.semester_project_crypto_wallet.ui.viewModels.TxViewModel" />
+            type="com.example.semester_project_crypto_wallet.ui.transactions.TxViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
