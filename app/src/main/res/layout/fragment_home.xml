@@ -8,42 +8,86 @@
             name="homeModel"
             type="com.example.semester_project_crypto_wallet.ui.home.HomeViewModel" />
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/createAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_account"
-            android:textAlignment="center" />
+        <!--        <Button-->
+<!--            android:id="@+id/createAccount"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/create_account"-->
+<!--            android:textAlignment="center" />-->
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/create_new_pair" />
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/create_new_pair" />-->
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button2" />
+<!--        <Button-->
+<!--            android:id="@+id/transactionsButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/transactionsButton" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/public_key"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="200dp"-->
+<!--            android:text="@string/pairKontoPublic" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/private_key"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="@string/pairKontoPrivate" />-->
 
         <TextView
-            android:id="@+id/public_key"
+            android:id="@+id/balanceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingStart="0dp"
+            android:text="@string/balanceTextView"
+            android:textAlignment="textEnd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/signinButton"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/signinButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/paymentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
-            android:text="@string/pairKontoPublic" />
+            android:text="@string/paymentButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
 
-        <TextView
-            android:id="@+id/private_key"
+        <Button
+            android:id="@+id/transactionsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:text="@string/pairKontoPrivate" />
-    </LinearLayout>
+            android:text="@string/transactionsButton"
+            app:layout_constraintEnd_toEndOf="@+id/paymentButton"
+            app:layout_constraintStart_toStartOf="@+id/paymentButton"
+            app:layout_constraintTop_toBottomOf="@+id/paymentButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

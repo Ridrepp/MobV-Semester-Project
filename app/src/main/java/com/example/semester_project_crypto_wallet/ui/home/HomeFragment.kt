@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        binding.button2.setOnClickListener{
+        binding.transactionsButton.setOnClickListener{
 
         }
         return binding.root
