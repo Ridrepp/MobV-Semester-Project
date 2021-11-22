@@ -12,23 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="409dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/darkGreen"-->
+<!--            android:minHeight="?attr/actionBarSize"-->
+<!--            android:theme="?attr/actionBarTheme"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:text="@string/app_name">-->
+<!--            <TextView android:layout_height="match_parent"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:text="@string/title"-->
+<!--                android:textSize="25sp"-->
+<!--                android:textStyle="bold"-->
+<!--                />-->
+<!--        </androidx.appcompat.widget.Toolbar>-->
+
         <TextView
             android:id="@+id/balanceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="10dp"
             android:paddingStart="0dp"
+            android:paddingEnd="20dp"
             android:text="@string/balanceTextView"
             android:textAlignment="textEnd"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--            android:backgroundTint="@color/lightBlue"-->
+        <!--            android:textColor="@color/black"-->
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="450dp"
             android:text="@string/sendButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -62,16 +82,16 @@
             android:id="@+id/destinationEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="150dp"
             android:ems="10"
             android:hint="@string/destinationEditText"
-            android:inputType="textPersonName"
             android:importantForAutofill="no"
+            android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balanceTextView"/>
+            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

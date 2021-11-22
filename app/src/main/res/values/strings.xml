@@ -13,4 +13,6 @@
     <string name="contactsButton">Contacts</string>
     <string name="sendButton">Send</string>
     <string name="amountEditText">Amount</string>
+    <string name="title">Stellar wallet</string>
+    <string name="showtransactionsButton">showTransactions</string>
 </resources>
