@@ -9,6 +9,15 @@
         android:id="@+id/homeFragment"
         android:name="com.example.semester_project_crypto_wallet.ui.home.HomeFragment"
         android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_txFragment"
+            app:destination="@id/txFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
@@ -16,5 +25,66 @@
         android:name="com.example.semester_project_crypto_wallet.ui.transactions.TxFragment"
         android:label="TxFragment">
     </fragment>
+
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.contacts.ContactsFragment"
+        android:label="ContactsFragment">
+        <action
+            android:id="@+id/action_contactsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.payments.PaymentFragment"
+        android:label="PaymentFragment">
+        <action
+            android:id="@+id/action_paymentFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+        <action
+            android:id="@+id/action_paymentFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/generateWalletFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.generate_wallet.GenerateWalletFragment"
+        android:label="GenerateWalletFragment">
+        <action
+            android:id="@+id/action_generateWalletFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.signin.SignInFragment"
+        android:label="SignInFragment">
+        <action
+            android:id="@+id/action_signInFragment_to_generateWalletFragment"
+            app:destination="@id/generateWalletFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_signInWalletFragment"
+            app:destination="@id/signInWalletFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInWalletFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.signin_wallet.SignInWalletFragment"
+        android:label="SignInWalletFragment">
+        <action
+            android:id="@+id/action_signInWalletFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pinFragment"
+        android:name="com.example.semester_project_crypto_wallet.ui.pin.PinFragment"
+        android:label="PinFragment">
+        <action
+            android:id="@+id/action_pinFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
 
 </navigation>
