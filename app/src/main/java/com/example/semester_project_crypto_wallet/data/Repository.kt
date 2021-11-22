@@ -1,6 +1,5 @@
 package com.example.semester_project_crypto_wallet.data
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import com.example.semester_project_crypto_wallet.data.db.LocalCache
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver

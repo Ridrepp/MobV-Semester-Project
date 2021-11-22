@@ -1,4 +1,4 @@
-package com.example.semester_project_crypto_wallet.ui.viewModels
+package com.example.semester_project_crypto_wallet.ui.home
 
 
 import androidx.lifecycle.MutableLiveData

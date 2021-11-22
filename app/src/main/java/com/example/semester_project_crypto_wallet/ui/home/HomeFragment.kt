@@ -1,4 +1,4 @@
-package com.example.semester_project_crypto_wallet.ui
+package com.example.semester_project_crypto_wallet.ui.home
 
 import android.os.Bundle
 import android.os.StrictMode
@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.User
 import com.example.semester_project_crypto_wallet.databinding.FragmentHomeBinding
-import com.example.semester_project_crypto_wallet.ui.viewModels.HomeViewModel
 import org.stellar.sdk.KeyPair
 
 class HomeFragment : Fragment() {
@@ -22,7 +21,7 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false
         )
-        binding.viewModel = homeViewModel
+        binding.homeModel = homeViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         //return inflater.inflate(R.layout.fragment_home, container, false)
