@@ -16,4 +16,5 @@
     <string name="title">Stellar wallet</string>
     <string name="showTransactionsButton">showTransactions</string>
     <string name="stellarWallet">Stellar Wallet</string>
+    <string name="generateButton">Generate</string>
 </resources>

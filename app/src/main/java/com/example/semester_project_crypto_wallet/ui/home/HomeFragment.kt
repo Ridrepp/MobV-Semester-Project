@@ -68,8 +68,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.paymentButton.setOnClickListener { it.findNavController().navigate(R.id.action_homeFragment_to_paymentFragment) }
-        binding.transactionsButton.setOnClickListener { it.findNavController().navigate(R.id.action_homeFragment_to_txFragment) }
+        binding.paymentButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_paymentFragment)}
+        binding.transactionsButton.setOnClickListener{it.findNavController().navigate(R.id.action_homeFragment_to_txFragment)}
+        binding.signinButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_signInFragment)}
     }
 //    private fun editTextViews(pair: KeyPair) {
 //        binding.apply {

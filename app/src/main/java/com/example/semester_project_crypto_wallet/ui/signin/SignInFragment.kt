@@ -1,13 +1,13 @@
 package com.example.semester_project_crypto_wallet.ui.signin
 
 import android.os.Bundle
-import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
 
@@ -23,5 +23,12 @@ class SignInFragment : Fragment(){
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.generateButton.setOnClickListener { it.findNavController().navigate(R.id.action_signInFragment_to_generateWalletFragment) }
+        binding.signinButton.setOnClickListener { it.findNavController().navigate(R.id.action_signInFragment_to_signInWalletFragment) }
     }
 }
