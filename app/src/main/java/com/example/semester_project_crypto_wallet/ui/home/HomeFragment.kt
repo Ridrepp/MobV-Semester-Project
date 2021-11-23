@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.paymentButton.setOnClickListener { it.findNavController().navigate(R.id.action_homeFragment_to_paymentFragment) }
+        binding.transactionsButton.setOnClickListener { it.findNavController().navigate(R.id.action_homeFragment_to_txFragment) }
     }
 //    private fun editTextViews(pair: KeyPair) {
 //        binding.apply {
