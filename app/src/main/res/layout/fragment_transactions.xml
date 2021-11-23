@@ -18,7 +18,7 @@
             android:id="@+id/showTransactions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/showtransactionsButton"
+            android:text="@string/showTransactionsButton"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

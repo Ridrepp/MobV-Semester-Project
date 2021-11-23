@@ -10,4 +10,9 @@
     <color name="myColor">#800FFE</color>
     <color name="lightBlue">#85CDE6</color>
     <color name="darkGreen">#25DD21</color>
+    <color name="stellar_wallet_background">#32A23F</color>
+    <color name="gray">#282828</color>
+    <color name="lightGray">#585858</color>
+    <color name="green">#0F5C19</color>
+    <color name="lightGreen">#32A23F</color>
 </resources>
