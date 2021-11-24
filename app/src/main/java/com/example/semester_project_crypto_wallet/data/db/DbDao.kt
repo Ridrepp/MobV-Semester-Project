@@ -10,9 +10,13 @@ import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 @Dao
 interface DbDao {
 
+    @Query("SELECT * from balance_table")
+    fun getBalance(): LiveData<Transaction>
+
     @Query("SELECT * from transactions_table")
     fun getTransactions(): LiveData<List<Transaction>>
 
+    //TODO: change to Livedata
     @Query("SELECT * from receivers_table")
     suspend fun getReceivers(): List<Receiver>
 

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.semester_project_crypto_wallet.data.db.entities.Balance
+import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 
@@ -11,7 +13,9 @@ import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
     entities =
     [
         Transaction::class,
-        Receiver::class
+        Receiver::class,
+        Credentials::class,
+        Balance::class
     ],
     version = 1,
     exportSchema = false)
