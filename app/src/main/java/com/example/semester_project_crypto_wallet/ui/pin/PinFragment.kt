@@ -1,7 +1,6 @@
 package com.example.semester_project_crypto_wallet.ui.pin
 
 import android.os.Bundle
-import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

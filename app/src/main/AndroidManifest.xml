@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.semester_project_crypto_wallet">
 
     <application
@@ -8,6 +9,7 @@
         android:label="@string/stellarWallet"
         android:roundIcon="@mipmap/stellar_wallet_round"
         android:supportsRtl="true"
+        tools:replace="android:label"
         android:theme="@style/Theme.SemesterProjectCryptoWallet">
         <activity
             android:name="com.example.semester_project_crypto_wallet.ui.MainActivity"

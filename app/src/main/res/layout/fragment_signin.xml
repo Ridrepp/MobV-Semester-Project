@@ -31,5 +31,6 @@
             app:layout_constraintEnd_toEndOf="@+id/generateButton"
             app:layout_constraintStart_toStartOf="@+id/generateButton"
             app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
