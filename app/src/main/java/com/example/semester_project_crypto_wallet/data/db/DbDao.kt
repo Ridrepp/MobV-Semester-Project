@@ -4,24 +4,38 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 
 @Dao
 interface DbDao {
 
+    //Balance
     @Query("SELECT * from balance_table")
-    fun getBalance(): LiveData<Transaction>
+    fun getBalance(): LiveData<Float>
 
+    //Keypair
+    @Query("SELECT publicKey from credentials_table")
+    fun getPublicKey(): LiveData<String>
+
+    @Query("SELECT privateKey from credentials_table")
+    fun getPrivateKey(): LiveData<String>
+
+    @Insert
+    suspend fun insertKeyPair(credentials: Credentials)
+
+    //Transactions
     @Query("SELECT * from transactions_table")
     fun getTransactions(): LiveData<List<Transaction>>
 
+    @Insert
+    suspend fun insertTransaction(transaction: Transaction)
+
+    //Receivers
     //TODO: change to Livedata
     @Query("SELECT * from receivers_table")
     suspend fun getReceivers(): List<Receiver>
-
-    @Insert
-    suspend fun insertTransaction(transaction: Transaction)
 
     @Insert
     suspend fun insertReceiver(receiver: Receiver)

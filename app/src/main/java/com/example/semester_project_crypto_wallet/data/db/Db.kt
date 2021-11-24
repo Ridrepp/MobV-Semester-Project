@@ -17,7 +17,7 @@ import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
         Credentials::class,
         Balance::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false)
 abstract class Db : RoomDatabase() {
 

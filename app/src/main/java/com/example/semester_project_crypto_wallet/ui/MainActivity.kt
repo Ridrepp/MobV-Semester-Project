@@ -1,6 +1,7 @@
 package com.example.semester_project_crypto_wallet.ui
 
 import android.os.Bundle
+import android.os.StrictMode
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
@@ -15,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Changing policy because of response from Stellar server
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
 
         NavigationUI.setupWithNavController(
             nav_view, Navigation.findNavController(
