@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             R.id.homeFragment -> {
-                finish()
                 return true
             }
         }

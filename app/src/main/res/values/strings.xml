@@ -17,4 +17,6 @@
     <string name="showTransactionsButton">showTransactions</string>
     <string name="stellarWallet">Stellar Wallet</string>
     <string name="generateButton">Generate</string>
+    <string name="numeric_password">Numeric password</string>
+    <string name="confirm">Confirm</string>
 </resources>
