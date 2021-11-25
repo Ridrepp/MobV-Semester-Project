@@ -51,36 +51,37 @@
 
         <!--            android:backgroundTint="@color/lightBlue"-->
 
-        <EditText
-            android:id="@+id/destinationEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:ems="10"
-            android:hint="@string/destinationEditText"
-            android:textColorHint="@color/white"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
+<!--        <EditText-->
+<!--            android:id="@+id/destinationEditText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="64dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/destinationEditText"-->
+<!--            android:importantForAutofill="no"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.502"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />-->
 
         <EditText
             android:id="@+id/amountEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="150dp"
             android:ems="10"
             android:hint="@string/amountEditText"
-            android:textColorHint="@color/white"
-            android:inputType="numberDecimal"
             android:importantForAutofill="no"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="@+id/destinationEditText"
-            app:layout_constraintStart_toStartOf="@+id/destinationEditText"
-            app:layout_constraintTop_toBottomOf="@+id/destinationEditText"/>
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
+
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="wrap_content"
@@ -88,14 +89,14 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="@string/numeric_password"
-            android:textColorHint="@color/white"
             android:importantForAutofill="no"
             android:inputType="numberPassword"
             android:maxLength="4"
             android:minHeight="48dp"
             android:text="@={paymentsModel.pin}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/amountEditText"
+            app:layout_constraintStart_toStartOf="@+id/amountEditText"
             app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
         <Button
             android:id="@+id/contactsButton"
@@ -116,6 +117,16 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+        <Spinner
+            android:id="@+id/contactsDropdown"
+            android:layout_width="290dp"
+            android:layout_height="57dp"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/amountEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
