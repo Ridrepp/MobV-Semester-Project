@@ -20,11 +20,7 @@ class HomeFragment : Fragment() {
         )
         binding.homeModel = homeViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
         //return inflater.inflate(R.layout.fragment_home, container, false)
-
-
-
 
         // Changing policy because of response from Stellar server
 //        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
@@ -55,21 +51,14 @@ class HomeFragment : Fragment() {
 //
 //            Log.i("****************","********END*************")
 //
-//
-//
 //        }
-
-        binding.transactionsButton.setOnClickListener{
-
-        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.paymentButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_paymentFragment)}
-        binding.transactionsButton.setOnClickListener{it.findNavController().navigate(R.id.action_homeFragment_to_txFragment)}
+        binding.registerButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_registerFragment)}
         binding.signinButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_signInFragment)}
     }
 //    private fun editTextViews(pair: KeyPair) {

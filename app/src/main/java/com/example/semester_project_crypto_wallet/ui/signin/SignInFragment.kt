@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
 
-class SignInFragment : Fragment(){
+class SignInFragment: Fragment() {
     private val signInViewModel: SignInViewModel by viewModels()
     private lateinit var binding: FragmentSigninBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -21,14 +21,11 @@ class SignInFragment : Fragment(){
         binding.signInModel = signInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.generateButton.setOnClickListener { it.findNavController().navigate(R.id.action_signInFragment_to_generateWalletFragment) }
-        binding.signinButton.setOnClickListener { it.findNavController().navigate(R.id.action_signInFragment_to_signInWalletFragment) }
+        binding.signInButton.setOnClickListener {it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)}
     }
 }

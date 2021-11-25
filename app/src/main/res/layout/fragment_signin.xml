@@ -11,26 +11,65 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/signInTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingTop="10dp"
+            android:text="@string/signInButton"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="46dp" />
 
-        <Button
-            android:id="@+id/generateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="@string/generateButton"
+        <View
+            android:id="@+id/divider"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/signinButton"
+            app:layout_constraintTop_toBottomOf="@+id/signInTextView" />
+        <EditText
+            android:id="@+id/public_key_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/signinButton"
-            app:layout_constraintEnd_toEndOf="@+id/generateButton"
-            app:layout_constraintStart_toStartOf="@+id/generateButton"
-            app:layout_constraintTop_toBottomOf="@+id/generateButton" />
+            android:text=""
+            android:ems="10"
+            android:hint="@string/publicKey"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no"
+            android:inputType="text"
+             />
 
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signInButton"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/public_key_text" />
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="409dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/myColor"-->
+<!--            android:minHeight="?attr/actionBarSize"-->
+<!--            android:theme="?attr/actionBarTheme"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:text="@string/app_name">-->
+<!--            <TextView android:layout_height="match_parent"  -->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:text="@string/title"/>-->
+<!--            </androidx.appcompat.widget.Toolbar>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

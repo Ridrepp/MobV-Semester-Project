@@ -12,57 +12,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar"-->
-<!--            android:layout_width="409dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/darkGreen"-->
-<!--            android:minHeight="?attr/actionBarSize"-->
-<!--            android:theme="?attr/actionBarTheme"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:text="@string/app_name">-->
-<!--            <TextView android:layout_height="match_parent"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="@string/title"-->
-<!--                android:textSize="25sp"-->
-<!--                android:textStyle="bold"-->
-<!--                />-->
-<!--        </androidx.appcompat.widget.Toolbar>-->
+
+        <TextView
+            android:id="@+id/paymentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingTop="10dp"
+            android:text="@string/paymentButton"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="46dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentTextView" />
 
         <TextView
             android:id="@+id/balanceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:paddingStart="0dp"
             android:paddingEnd="20dp"
             android:text="@string/balanceTextView"
             android:textColor="@color/white"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--            android:backgroundTint="@color/lightBlue"-->
-        <Button
-            android:id="@+id/sendButton"
+
+        <EditText
+            android:id="@+id/destinationEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="450dp"
-            android:text="@string/sendButton"
+            android:layout_marginTop="60dp"
+            android:ems="10"
+            android:hint="@string/destinationEditText"
+            android:textColorHint="@color/white"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
-
-        <Button
-            android:id="@+id/contactsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/contactsButton"
-            app:layout_constraintEnd_toEndOf="@+id/amountEditText"
-            app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
 
         <EditText
             android:id="@+id/amountEditText"
@@ -78,22 +81,42 @@
             app:layout_constraintEnd_toEndOf="@+id/destinationEditText"
             app:layout_constraintStart_toStartOf="@+id/destinationEditText"
             app:layout_constraintTop_toBottomOf="@+id/destinationEditText"/>
-
         <EditText
-            android:id="@+id/destinationEditText"
+            android:id="@+id/passwordEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="@string/destinationEditText"
+            android:hint="@string/numeric_password"
             android:textColorHint="@color/white"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="numberPassword"
+            android:maxLength="4"
             android:minHeight="48dp"
+            android:text="@={paymentsModel.pin}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/amountEditText" />
+        <Button
+            android:id="@+id/contactsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/contactsButton"
+            app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sendButton"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

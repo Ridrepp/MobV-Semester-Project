@@ -14,6 +14,38 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="408dp"-->
+<!--            android:layout_height="212dp"-->
+<!--            android:layout_marginTop="136dp"-->
+<!--            android:contentDescription="@string/logo_stellar_wallet"-->
+<!--            android:src="@drawable/"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+<!--        </ImageView>-->
+
+        <Button
+            android:id="@+id/signinButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:text="@string/signInButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/registerText"
+            app:layout_constraintEnd_toEndOf="@+id/signinButton"
+            app:layout_constraintStart_toStartOf="@+id/signinButton"
+            app:layout_constraintTop_toBottomOf="@+id/signinButton" />
         <!--        <Button-->
 <!--            android:id="@+id/createAccount"-->
 <!--            android:layout_width="wrap_content"-->
@@ -47,48 +79,7 @@
 <!--            android:layout_marginTop="20dp"-->
 <!--            android:text="@string/pairKontoPrivate" />-->
 
-        <TextView
-            android:id="@+id/balanceTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingEnd="10dp"
-            android:paddingStart="0dp"
-            android:textColor="@color/white"
-            android:text="@string/balanceTextView"
-            android:textAlignment="textEnd"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/signinButton"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/signinButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/paymentButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="@string/paymentButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
-
-        <Button
-            android:id="@+id/transactionsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/transactionsButton"
-            app:layout_constraintEnd_toEndOf="@+id/paymentButton"
-            app:layout_constraintStart_toStartOf="@+id/paymentButton"
-            app:layout_constraintTop_toBottomOf="@+id/paymentButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

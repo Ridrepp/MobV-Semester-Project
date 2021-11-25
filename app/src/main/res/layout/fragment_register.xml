@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="generateWalletModel"
-            type="com.example.semester_project_crypto_wallet.ui.generate_wallet.GenerateWalletViewModel" />
+            name="registerModel"
+            type="com.example.semester_project_crypto_wallet.ui.register.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,10 +13,31 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/registerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingTop="10dp"
+            android:text="@string/signInButton"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="46dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
+        <TextView
             android:id="@+id/public_key_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{generateWalletModel.publicKeyStr}"
+            android:text="@{registerModel.publicKeyStr}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
@@ -28,7 +49,7 @@
             android:id="@+id/private_key_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{generateWalletModel.privateKeyStr}"
+            android:text="@{registerModel.privateKeyStr}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.451"
@@ -40,29 +61,38 @@
             android:id="@+id/passwordEditText"
             android:layout_width="260dp"
             android:layout_height="50dp"
-            android:layout_marginTop="460dp"
             android:ems="10"
+            android:layout_marginTop="50dp"
             android:hint="@string/numeric_password"
             android:importantForAutofill="no"
+            android:textColorHint="@color/white"
             android:inputType="numberPassword"
             android:maxLength="4"
-            android:text="@={generateWalletModel.pin}"
+            android:text="@={registerModel.pin}"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.437"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/private_key_text" />
 
         <Button
-            android:id="@+id/confirmGeneration"
+            android:id="@+id/generateKeys"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/generate"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.816" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+        <Button
+            android:id="@+id/confirmRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registerText"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/generateKeys" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

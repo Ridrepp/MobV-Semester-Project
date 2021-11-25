@@ -1,6 +1,30 @@
 package com.example.semester_project_crypto_wallet.ui.payments
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.semester_project_crypto_wallet.data.Repository
 
-class PaymentsViewModel : ViewModel() {
+class PaymentsViewModel (private val repository: Repository
+) : ViewModel()
+{
+//    val publicKeyStr: LiveData<String>
+//        get() = repository.getPublicKey()
+//    //TODO: show unhashed key
+//    val privateKeyStr: LiveData<String>
+//        get() = repository.getPrivateKey()
+
+    var publicKeyStr: MutableLiveData<String> = MutableLiveData()
+
+    val pin: MutableLiveData<String> = MutableLiveData()
+
+    fun confirmPin(){
+        pin.value?.let {
+            if(it.isNotEmpty()){
+                //TODO: process pin
+                Log.i("confirm_pin", it)
+            }
+        }
+    }
+
 }

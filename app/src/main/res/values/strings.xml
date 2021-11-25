@@ -8,7 +8,7 @@
     <string name="create_new_pair">Create New Pair</string>
     <string name="create_account">Create Account</string>
     <string name="balanceTextView">Zostatok</string>
-    <string name="signinButton">Sign In</string>
+    <string name="signInButton">Sign In</string>
     <string name="destinationEditText">Destination</string>
     <string name="contactsButton">Contacts</string>
     <string name="sendButton">Send</string>
@@ -19,4 +19,9 @@
     <string name="generateButton">Generate</string>
     <string name="numeric_password">Numeric password</string>
     <string name="confirm">Confirm</string>
+    <string name="registerText">Register</string>
+    <string name="logo_stellar_wallet">Logo Stellar Wallet</string>
+    <string name="addContact">Add Contact</string>
+    <string name="generate">Generate</string>
+    <string name="publicKey">Public Key</string>
 </resources>
