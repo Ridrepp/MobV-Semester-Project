@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentContactsBinding
@@ -16,8 +18,12 @@ import kotlinx.coroutines.launch
 class ContactsFragment : Fragment(){
     private lateinit var contactsViewModel: ContactsViewModel
     private lateinit var binding: FragmentContactsBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    private lateinit var newRecyclerView: RecyclerView
+    private lateinit var newArrayList: ArrayList<Contacts>
+    lateinit var contactsName: Array<String>
+    lateinit var contactsPK: Array<String>
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         contactsViewModel =
             ViewModelProvider(
                 this,
@@ -28,6 +34,21 @@ class ContactsFragment : Fragment(){
         )
         binding.contactsModel = contactsViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        //TODO(Napojit na DB)
+        contactsName = arrayOf("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","2")
+        contactsPK = arrayOf("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","3")
+
+        newRecyclerView = binding.contactsRecyclerView
+        newRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        newRecyclerView.setHasFixedSize(true)
+
+        newArrayList = arrayListOf<Contacts>()
+        for (i in contactsName.indices){
+            val contacts = Contacts(contactsName[i], contactsPK[i])
+            newArrayList.add(contacts)
+        }
+        newRecyclerView.adapter = ContactsAdapter(newArrayList)
 
         return binding.root
     }
