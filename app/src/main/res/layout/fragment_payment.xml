@@ -93,7 +93,6 @@
             android:inputType="numberPassword"
             android:maxLength="4"
             android:minHeight="48dp"
-            android:text="@={paymentsModel.pin}"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/amountEditText"
             app:layout_constraintStart_toStartOf="@+id/amountEditText"
@@ -120,7 +119,7 @@
 
         <Spinner
             android:id="@+id/contactsDropdown"
-            android:layout_width="290dp"
+            android:layout_width="220dp"
             android:layout_height="57dp"
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/amountEditText"

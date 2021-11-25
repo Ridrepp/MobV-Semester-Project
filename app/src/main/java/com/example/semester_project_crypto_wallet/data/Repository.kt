@@ -37,10 +37,8 @@ class Repository(private val cache: LocalCache) {
 //    }
 
     fun getTransactions(): LiveData<List<Transaction>> = cache.getTransactions()
+    fun getReceivers(): LiveData<List<Receiver>> = cache.getReceivers()
 
-    suspend fun getReceivers() {
-        cache.getReceivers()
-    }
 
     suspend fun insertTransaction(transaction: Transaction) {
         cache.insertTransaction(transaction)

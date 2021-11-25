@@ -33,9 +33,8 @@ interface DbDao {
     suspend fun insertTransaction(transaction: Transaction)
 
     //Receivers
-    //TODO: change to Livedata
     @Query("SELECT * from receivers_table")
-    suspend fun getReceivers(): List<Receiver>
+    fun getReceivers(): LiveData<List<Receiver>>
 
     @Insert
     suspend fun insertReceiver(receiver: Receiver)

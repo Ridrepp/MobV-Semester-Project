@@ -33,11 +33,6 @@
         android:label="PaymentFragment"/>
 
     <fragment
-        android:id="@+id/generateWalletFragment"
-        android:name="com.example.semester_project_crypto_wallet.ui.generate_wallet.GenerateWalletFragment"
-        android:label="GenerateWalletFragment"/>
-
-    <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.semester_project_crypto_wallet.ui.register.RegisterFragment"
         android:label="RegisterFragment">
@@ -55,10 +50,6 @@
             app:destination="@id/loggedInFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/pinFragment"
-        android:name="com.example.semester_project_crypto_wallet.ui.pin.PinFragment"
-        android:label="PinFragment"/>
     <fragment
         android:id="@+id/loggedInFragment"
         android:name="com.example.semester_project_crypto_wallet.ui.logged_in.LoggedInFragment"
