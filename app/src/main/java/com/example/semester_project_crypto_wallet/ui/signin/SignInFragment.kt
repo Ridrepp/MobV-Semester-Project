@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
@@ -42,19 +42,22 @@ class SignInFragment : Fragment() {
 
         binding.signInButton.setOnClickListener {
             if (signInViewModel.logInAccount()) {
-                //Log.i("LIVEDATA-FINDED-USER",signInViewModel.findkeycredential.toString())
-                signInViewModel.findkeycredential.observe(
+                signInViewModel.findKeyCredential.observe(
                     viewLifecycleOwner,
                     {
-                        Log.i("FOUNDED PUBLIC", it.publicKey)
-                        Log.i("FOUNDED PRIVATE", it.privateKey)
+                        if (it == null){
+                            Toast.makeText(context, "Konto so zadaným public key nebolo nájdené.", Toast.LENGTH_LONG).show()
+                        }
+                        else {
+                            Log.i("FOUNDED PUBLIC", it.publicKey)
+                            Log.i("FOUNDED PRIVATE", it.privateKey)
+
+                            findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
+                        }
                     })
-
-
-                //it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
             } else
                 Toast.makeText(
-                    context, "Nebol zadaný public key existujúceho konta.",
+                    context, "Nebol zadaný public key.",
                     Toast.LENGTH_SHORT
                 ).show()
         }
