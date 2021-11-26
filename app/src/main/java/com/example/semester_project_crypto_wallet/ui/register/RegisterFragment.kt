@@ -1,9 +1,11 @@
 package com.example.semester_project_crypto_wallet.ui.register
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +16,7 @@ import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentRegisterBinding
 import kotlinx.coroutines.launch
 
-class RegisterFragment : Fragment(){
+class RegisterFragment : Fragment() {
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var binding: FragmentRegisterBinding
 
@@ -22,8 +24,7 @@ class RegisterFragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View
-    {
+    ): View {
         registerViewModel =
             ViewModelProvider(
                 this,
@@ -42,7 +43,7 @@ class RegisterFragment : Fragment(){
 
 
         // GENERATE BUTTON LISTENER
-        binding.generateKeys.setOnClickListener{
+        binding.generateKeys.setOnClickListener {
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
             }
@@ -57,6 +58,7 @@ class RegisterFragment : Fragment(){
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,8 +68,8 @@ class RegisterFragment : Fragment(){
                 registerViewModel.createAccount()
                 registerViewModel.insertUserToDb()
 
-                registerViewModel.confirmPin()
             }
-            it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)}
+            it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
+        }
     }
 }
