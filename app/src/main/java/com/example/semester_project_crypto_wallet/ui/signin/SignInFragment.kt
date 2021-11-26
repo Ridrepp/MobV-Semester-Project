@@ -6,18 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.semester_project_crypto_wallet.R
+import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
 
 class SignInFragment: Fragment() {
-    private val signInViewModel: SignInViewModel by viewModels()
+    private lateinit var signInViewModel: SignInViewModel
     private lateinit var binding: FragmentSigninBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        signInViewModel =
+            ViewModelProvider(
+                this,
+                Injection.provideViewModelFactory(requireContext())
+            ).get(SignInViewModel::class.java)
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_signin, container, false
         )
+
+
         binding.signInModel = signInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

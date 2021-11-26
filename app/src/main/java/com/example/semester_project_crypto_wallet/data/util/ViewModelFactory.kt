@@ -6,6 +6,7 @@ import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.ui.contacts.ContactsViewModel
 import com.example.semester_project_crypto_wallet.ui.payments.PaymentsViewModel
 import com.example.semester_project_crypto_wallet.ui.register.RegisterViewModel
+import com.example.semester_project_crypto_wallet.ui.signin.SignInViewModel
 import com.example.semester_project_crypto_wallet.ui.transactions.TxViewModel
 
 class ViewModelFactory (
@@ -32,6 +33,11 @@ class ViewModelFactory (
         if (modelClass.isAssignableFrom(ContactsViewModel::class.java)) {
             @Suppress("unchecked_cast")
             return ContactsViewModel(repository) as T
+        }
+
+        if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
+            @Suppress("unchecked_cast")
+            return SignInViewModel(repository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class")
