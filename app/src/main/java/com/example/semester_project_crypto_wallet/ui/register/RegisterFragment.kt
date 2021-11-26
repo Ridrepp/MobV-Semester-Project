@@ -1,10 +1,13 @@
 package com.example.semester_project_crypto_wallet.ui.register
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -60,17 +63,25 @@ class RegisterFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ShowToast")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // REGISTER BUTTON LISTENER
         binding.confirmRegister.setOnClickListener {
+//          TODO: repair Toast.makeText to inform user set PIN for Register Account
             lifecycleScope.launch {
-                registerViewModel.createAccount()
-                registerViewModel.insertUserToDb()
-
+//                registerViewModel.createAccount()
+                if (!registerViewModel.insertUserToDb()) {
+                    Toast.makeText(
+                        requireParentFragment().activity,
+                        "Nebol zadaný PIN. Nebolo možné zaregistrovať účet.",
+                        Toast.LENGTH_SHORT
+                    )
+                    Log.i("RegisterPIN", "Not PIN")
+                }else
+                    it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
             }
-            it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
         }
     }
 }
