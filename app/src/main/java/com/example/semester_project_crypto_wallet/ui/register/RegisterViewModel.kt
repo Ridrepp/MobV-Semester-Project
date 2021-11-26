@@ -2,6 +2,7 @@ package com.example.semester_project_crypto_wallet.ui.register
 
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -53,13 +54,27 @@ class RegisterViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     fun insertUserToDb() {
         viewModelScope.launch {
+            //TODO CHECKING LENGTH OF PIN
+            //TODO CHECKING IF KEYS WERE GENERATED BEFORE REGISTERING
 
             // ENCRYPT SECRET KEY WITH PIN FROM USER
             val encrypted_secretkey =
                 pin.value?.let { AES.encrypt(String(user.my_keypair.secretSeed), it) }.toString()
 
-            // INSERT PUBLIC KEY AND ENCRYPTED SECRET KEY TO DB
-            repository.insertKeyPair(Credentials(user.my_keypair.accountId, encrypted_secretkey))
+            try {
+                // INSERT PUBLIC KEY AND ENCRYPTED SECRET KEY TO DB
+                repository.insertKeyPair(
+                    Credentials(
+                        user.my_keypair.accountId,
+                        encrypted_secretkey
+                    )
+                )
+                Log.i("***","*****REGISTRATION SUCCESSFUL******")
+
+
+            } catch (e: Exception) {
+                Log.i("EXCEPTION", e.toString())
+            }
 
 
         }

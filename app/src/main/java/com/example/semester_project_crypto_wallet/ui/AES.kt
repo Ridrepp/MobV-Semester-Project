@@ -11,6 +11,7 @@ import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
+// https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
 
 object AES {
     private var secretKey: SecretKeySpec? = null
