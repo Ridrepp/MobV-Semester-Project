@@ -1,6 +1,7 @@
 package com.example.semester_project_crypto_wallet.ui.signin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,14 @@ import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
 
-class SignInFragment: Fragment() {
+class SignInFragment : Fragment() {
     private lateinit var signInViewModel: SignInViewModel
     private lateinit var binding: FragmentSigninBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         signInViewModel =
             ViewModelProvider(
                 this,
@@ -31,15 +36,27 @@ class SignInFragment: Fragment() {
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInButton.setOnClickListener {
-            if (signInViewModel.logInAccount())
-                it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
-            else
-                Toast.makeText(context,"Nebol zadaný public key existujúceho konta.",
-                    Toast.LENGTH_SHORT ).show()
+            if (signInViewModel.logInAccount()) {
+                //Log.i("LIVEDATA-FINDED-USER",signInViewModel.findkeycredential.toString())
+                signInViewModel.findkeycredential.observe(
+                    viewLifecycleOwner,
+                    {
+                        Log.i("FOUNDED PUBLIC", it.publicKey)
+                        Log.i("FOUNDED PRIVATE", it.privateKey)
+                    })
+
+
+                //it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
+            } else
+                Toast.makeText(
+                    context, "Nebol zadaný public key existujúceho konta.",
+                    Toast.LENGTH_SHORT
+                ).show()
         }
     }
 }

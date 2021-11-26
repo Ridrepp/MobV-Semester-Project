@@ -21,7 +21,7 @@ class LocalCache(private val dao: DbDao) {
 
     fun getCredentials(): LiveData<List<Credentials>> = dao.getCredentials()
 
-    fun findKeyCredentials(findKey: String): Boolean= dao.findKeyCredentials(findKey)
+    fun findKeyCredentials(findKey: String): LiveData<Credentials> = dao.findKeyCredentials(findKey)
 
     fun getTransactions(): LiveData<List<Transaction>> = dao.getTransactions()
 

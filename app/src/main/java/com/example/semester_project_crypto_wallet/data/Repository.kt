@@ -37,7 +37,7 @@ class Repository(private val cache: LocalCache) {
 //    }
     fun getCredentials(): LiveData<List<Credentials>> = cache.getCredentials()
 
-    fun findKeyCredentials(findKey: String): Boolean = cache.findKeyCredentials(findKey)
+    fun findKeyCredentials(findKey: String): LiveData<Credentials> = cache.findKeyCredentials(findKey)
 
     fun getTransactions(): LiveData<List<Transaction>> = cache.getTransactions()
     fun getReceivers(): LiveData<List<Receiver>> = cache.getReceivers()
