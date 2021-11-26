@@ -21,8 +21,8 @@ class RegisterViewModel(
 
         var publicKeyStr: MutableLiveData<String> = MutableLiveData()
         var privateKeyStr: MutableLiveData<String> = MutableLiveData()
-
         val pin: MutableLiveData<String> = MutableLiveData()
+        private val user = User()
 
         fun confirmPin(){
             pin.value?.let {
@@ -35,18 +35,30 @@ class RegisterViewModel(
 
         fun generateKeyPair(){
             //TODO: generate keypair
-            val first_user = User()
-            first_user.createAccount()
+            user.generateKeys()
 
-            Log.i("generateKeyPair()", first_user.my_keypair.accountId)
-            Log.i("generateKeyPair()", String(first_user.my_keypair.secretSeed))
+            // LIVE DATA FOR USER INTERFACE
+            publicKeyStr.value = user.my_keypair.accountId
+            privateKeyStr.value = String(user.my_keypair.secretSeed)
 
-            publicKeyStr.value = first_user.my_keypair.accountId
-            privateKeyStr.value = String(first_user.my_keypair.secretSeed)
+//            user.createAccount()
+//            Log.i("generateKeyPair()", user.my_keypair.accountId)
+//            Log.i("generateKeyPair()", String(user.my_keypair.secretSeed))
 
+
+
+
+        }
+
+        fun createAccount(){
+            user.createAccount()
+        }
+
+        fun insertUserToDb(){
             //TODO: insert into room by repository
             viewModelScope.launch {
-                repository.insertKeyPair(Credentials(first_user.my_keypair.accountId,String(first_user.my_keypair.secretSeed)))
+                repository.insertKeyPair(Credentials(user.my_keypair.accountId,String(user.my_keypair.secretSeed)))
             }
+
         }
 }

@@ -40,6 +40,8 @@ class RegisterFragment : Fragment(){
         binding.registerModel = registerViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+
+        // GENERATE BUTTON LISTENER
         binding.generateKeys.setOnClickListener{
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
@@ -58,8 +60,12 @@ class RegisterFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // REGISTER BUTTON LISTENER
         binding.confirmRegister.setOnClickListener {
             lifecycleScope.launch {
+                registerViewModel.createAccount()
+                registerViewModel.insertUserToDb()
+
                 registerViewModel.confirmPin()
             }
             it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)}

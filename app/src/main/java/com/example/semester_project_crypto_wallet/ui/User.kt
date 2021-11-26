@@ -12,13 +12,14 @@ import java.util.*
 
 
 class User() {
-    val my_keypair: KeyPair
+    lateinit var my_keypair: KeyPair
 
-    init {
+
+    fun generateKeys(){
         my_keypair = KeyPair.random()
-        Log.i("WAR", my_keypair.toString())
-        Log.i("WAR", String(my_keypair.getSecretSeed()))
-        Log.i("WAR", my_keypair.accountId)
+        Log.i("KEYPAIR:", my_keypair.toString())
+        Log.i("PUBLIC KEY:", my_keypair.accountId)
+        Log.i("PRIVATE KEY:", String(my_keypair.getSecretSeed()))
     }
 
     // This function creates and funds account from generated keypairs above with 10,000 test XLM
