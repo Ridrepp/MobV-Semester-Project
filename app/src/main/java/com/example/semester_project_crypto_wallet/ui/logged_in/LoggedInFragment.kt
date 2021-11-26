@@ -40,5 +40,8 @@ class LoggedInFragment : Fragment() {
         binding.addContactButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_loggedInFragment_to_contactsFragment)
         }
+        binding.loggedOutButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
+        }
     }
 }

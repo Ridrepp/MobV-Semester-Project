@@ -70,13 +70,12 @@ class RegisterFragment : Fragment() {
         // REGISTER BUTTON LISTENER
         binding.confirmRegister.setOnClickListener {
 //          TODO: repair Toast.makeText to inform user set PIN for Register Account
-            lifecycleScope.launch {
-//                registerViewModel.createAccount()
+            viewLifecycleOwner.lifecycleScope.launch {
                 if (!registerViewModel.insertUserToDb()) {
                     Toast.makeText(
-                        requireParentFragment().activity,
+                        binding.root.context.applicationContext,
                         "Nebol zadaný PIN. Nebolo možné zaregistrovať účet.",
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                     )
                     Log.i("RegisterPIN", "Not PIN")
                 }else

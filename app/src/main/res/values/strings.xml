@@ -24,4 +24,5 @@
     <string name="addContact">Add Contact</string>
     <string name="generate">Generate</string>
     <string name="publicKey">Public Key</string>
+    <string name="log_out">Log out</string>
 </resources>
