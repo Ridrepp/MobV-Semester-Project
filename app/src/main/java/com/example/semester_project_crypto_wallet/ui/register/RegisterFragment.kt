@@ -3,7 +3,6 @@ package com.example.semester_project_crypto_wallet.ui.register
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,15 +68,13 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // REGISTER BUTTON LISTENER
         binding.confirmRegister.setOnClickListener {
-//          TODO: repair Toast.makeText to inform user set PIN for Register Account
-            viewLifecycleOwner.lifecycleScope.launch {
+            lifecycleScope.launch {
                 if (!registerViewModel.insertUserToDb()) {
                     Toast.makeText(
-                        binding.root.context.applicationContext,
+                        context,
                         "Nebol zadaný PIN. Nebolo možné zaregistrovať účet.",
-                        Toast.LENGTH_LONG
-                    )
-                    Log.i("RegisterPIN", "Not PIN")
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }else
                     it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
             }
