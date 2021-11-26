@@ -37,7 +37,7 @@ class RegisterFragment : Fragment() {
             container,
             false
         )
-
+        binding.confirmRegister.isEnabled = false
         binding.registerModel = registerViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -47,7 +47,9 @@ class RegisterFragment : Fragment() {
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
             }
+            binding.confirmRegister.isEnabled = true
         }
+
 //        binding.confirmRegister.setOnClickListener{
 //            lifecycleScope.launch {
 //                registerViewModel.confirmPin()
@@ -61,7 +63,6 @@ class RegisterFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // REGISTER BUTTON LISTENER
         binding.confirmRegister.setOnClickListener {
             lifecycleScope.launch {
