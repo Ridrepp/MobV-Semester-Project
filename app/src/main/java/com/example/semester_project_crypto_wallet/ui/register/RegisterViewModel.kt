@@ -17,7 +17,6 @@ class RegisterViewModel(
 ) : ViewModel() {
 //    val publicKeyStr: LiveData<String>
 //        get() = repository.getPublicKey()
-//    //TODO: show unhashed key
 //    val privateKeyStr: LiveData<String>
 //        get() = repository.getPrivateKey()
 
@@ -37,12 +36,9 @@ class RegisterViewModel(
     fun generateKeyPair() {
         //TODO: generate keypair
         user.generateKeys()
-
         // LIVE DATA FOR USER INTERFACE
         publicKeyStr.value = user.my_keypair.accountId
         privateKeyStr.value = String(user.my_keypair.secretSeed)
-
-
     }
 
 //    fun createAccount() {
@@ -52,13 +48,9 @@ class RegisterViewModel(
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun insertUserToDb() : Boolean{
-        if (pin.value?.length == 4)
-        {
+        if (pin.value?.length == 4){
             user.createAccount()
             viewModelScope.launch {
-                //TODO CHECKING LENGTH OF PIN
-                //TODO CHECKING IF KEYS WERE GENERATED BEFORE REGISTERING
-                // ENCRYPT SECRET KEY WITH PIN FROM USER
                 val encrypted_secretkey =
                     pin.value?.let { AES.encrypt(String(user.my_keypair.secretSeed), it) }.toString()
                 try {
@@ -72,6 +64,5 @@ class RegisterViewModel(
             return true
         }
         return false
-
     }
 }

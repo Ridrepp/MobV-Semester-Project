@@ -22,6 +22,12 @@ interface DbDao {
     @Query("SELECT privateKey from credentials_table")
     fun getPrivateKey(): LiveData<String>
 
+    @Query("SELECT * from credentials_table")
+    fun getCredentials(): LiveData<List<Credentials>>
+
+    @Query("SELECT publicKey from credentials_table WHERE publicKey = :findKey")
+    fun findKeyCredentials(findKey:String): Boolean
+
     @Insert
     suspend fun insertKeyPair(credentials: Credentials)
 

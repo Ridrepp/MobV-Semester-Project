@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +26,6 @@ class SignInFragment: Fragment() {
             inflater, R.layout.fragment_signin, container, false
         )
 
-
         binding.signInModel = signInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -34,6 +34,12 @@ class SignInFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.signInButton.setOnClickListener {it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)}
+        binding.signInButton.setOnClickListener {
+            if (signInViewModel.logInAccount())
+                it.findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
+            else
+                Toast.makeText(context,"Nebol zadaný public key existujúceho konta.",
+                    Toast.LENGTH_SHORT ).show()
+        }
     }
 }

@@ -62,7 +62,6 @@ class RegisterFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("ShowToast")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

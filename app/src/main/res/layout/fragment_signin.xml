@@ -42,7 +42,7 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text=""
+            android:text="@={signInModel.publicKeyStrEditText}"
             android:textColorHint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
