@@ -8,6 +8,8 @@ import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 
 class SignInViewModel(private val repository: Repository) : ViewModel() {
     val publicKeyStrEditText: MutableLiveData<String> = MutableLiveData()
+    val privateKeyStrEditText: MutableLiveData<String> = MutableLiveData()
+    val pinKeyEditText: MutableLiveData<String> = MutableLiveData()
 
     lateinit var findKeyCredential: LiveData<Credentials>
 

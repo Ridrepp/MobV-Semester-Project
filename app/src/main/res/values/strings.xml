@@ -2,9 +2,6 @@
     <string name="app_name">Semester-Project-Crypto-Wallet</string>
     <string name="transactionsButton">Transactions</string>
     <string name="paymentButton">Payment</string>
-    <string name="pairKontoPublic"> </string>
-    <string name="pairKontoPrivate"> </string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_new_pair">Create New Pair</string>
     <string name="create_account">Create Account</string>
     <string name="balanceTextView">Zostatok</string>
@@ -24,5 +21,6 @@
     <string name="addContact">Add Contact</string>
     <string name="generate">Generate</string>
     <string name="publicKey">Public Key</string>
+    <string name="privateKey">Private Key</string>
     <string name="log_out">Log out</string>
 </resources>

@@ -34,30 +34,68 @@
             app:layout_constraintTop_toBottomOf="@+id/signInTextView" />
 
         <EditText
-            android:id="@+id/public_key_text"
+            android:id="@+id/publicKeyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+
             android:hint="@string/publicKey"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:layout_marginTop="150dp"
             android:minHeight="48dp"
             android:text="@={signInModel.publicKeyStrEditText}"
             android:textColorHint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+             />
+
+        <EditText
+            android:id="@+id/privateKeyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/privateKey"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:layout_marginTop="80dp"
+            android:text="@={signInModel.privateKeyStrEditText}"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/publicKeyText"
+/>
+
+        <EditText
+            android:id="@+id/pinText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:ems="4"
+            android:hint="@string/numeric_password"
+            android:importantForAutofill="no"
+            android:inputType="numberPassword"
+            android:maxEms="4"
+            android:maxLength="4"
+            android:text="@={signInModel.pinKeyEditText}"
+            android:textAlignment="center"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/privateKeyText" />
 
         <Button
             android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signInButton"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/public_key_text" />
+            app:layout_constraintTop_toBottomOf="@+id/pinText" />
 <!--        <androidx.appcompat.widget.Toolbar-->
 <!--            android:id="@+id/toolbar"-->
 <!--            android:layout_width="409dp"-->
