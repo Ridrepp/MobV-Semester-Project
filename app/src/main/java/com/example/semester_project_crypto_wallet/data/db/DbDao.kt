@@ -1,6 +1,7 @@
 package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -21,6 +22,9 @@ interface DbDao {
 
     @Query("SELECT privateKey from credentials_table")
     fun getPrivateKey(): LiveData<String>
+
+    @Query("SELECT COUNT(publicKey) from credentials_table")
+    fun getCountCredentials(): LiveData<Int>
 
     @Query("SELECT * from credentials_table")
     fun getCredentials(): LiveData<List<Credentials>>

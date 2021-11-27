@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.ui.contacts.ContactsViewModel
+import com.example.semester_project_crypto_wallet.ui.logged_in.LoggedInViewModel
 import com.example.semester_project_crypto_wallet.ui.payments.PaymentsViewModel
 import com.example.semester_project_crypto_wallet.ui.register.RegisterViewModel
 import com.example.semester_project_crypto_wallet.ui.signin.SignInViewModel
@@ -38,6 +39,11 @@ class ViewModelFactory (
         if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
             @Suppress("unchecked_cast")
             return SignInViewModel(repository) as T
+        }
+
+        if (modelClass.isAssignableFrom(LoggedInViewModel::class.java)) {
+            @Suppress("unchecked_cast")
+            return LoggedInViewModel(repository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class")
