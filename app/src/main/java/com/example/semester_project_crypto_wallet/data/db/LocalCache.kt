@@ -1,7 +1,6 @@
 package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
@@ -26,6 +25,8 @@ class LocalCache(private val dao: DbDao) {
 
     fun findKeyCredentials(findKey: String): LiveData<Credentials> = dao.findKeyCredentials(findKey)
 
+    suspend fun clearCredentials() = dao.clearCredentials()
+
     //Transactions
     fun getTransactions(): LiveData<List<Transaction>> = dao.getTransactions()
 
@@ -39,4 +40,5 @@ class LocalCache(private val dao: DbDao) {
     suspend fun insertReceiver(receiver: Receiver) {
         dao.insertReceiver(receiver)
     }
+
 }

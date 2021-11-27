@@ -1,7 +1,6 @@
 package com.example.semester_project_crypto_wallet.data
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.semester_project_crypto_wallet.data.db.LocalCache
 import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
@@ -41,6 +40,8 @@ class Repository(private val cache: LocalCache) {
     fun getCredentials(): LiveData<List<Credentials>> = cache.getCredentials()
 
     fun findKeyCredentials(findKey: String): LiveData<Credentials> = cache.findKeyCredentials(findKey)
+
+    suspend fun clearCredentials() = cache.clearCredentials()
 
     fun getTransactions(): LiveData<List<Transaction>> = cache.getTransactions()
     fun getReceivers(): LiveData<List<Receiver>> = cache.getReceivers()

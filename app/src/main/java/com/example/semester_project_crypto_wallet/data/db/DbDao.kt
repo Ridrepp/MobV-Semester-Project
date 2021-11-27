@@ -1,7 +1,6 @@
 package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -34,6 +33,9 @@ interface DbDao {
 
     @Insert
     suspend fun insertKeyPair(credentials: Credentials)
+
+    @Query("DELETE FROM credentials_table")
+    suspend fun clearCredentials()
 
     //Transactions
     @Query("SELECT * from transactions_table")
