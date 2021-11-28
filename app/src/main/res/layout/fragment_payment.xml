@@ -69,7 +69,7 @@
         <Spinner
             android:id="@+id/contactsDropdown"
             android:layout_width="220dp"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:textColor="@color/white"
             android:labelFor="@id/contactsDropdown"
