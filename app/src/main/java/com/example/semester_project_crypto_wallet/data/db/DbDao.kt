@@ -3,6 +3,7 @@ package com.example.semester_project_crypto_wallet.data.db
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.semester_project_crypto_wallet.data.db.entities.Balance
 import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
@@ -39,6 +40,7 @@ interface DbDao {
     suspend fun insertKeyPair(credentials: Credentials)
 
     @Insert
+    //@Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalance(balance: Balance)
 
     @Query("DELETE FROM credentials_table")
@@ -55,7 +57,7 @@ interface DbDao {
     @Query("SELECT * from receivers_table")
     fun getReceivers(): LiveData<List<Receiver>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertReceiver(receiver: Receiver)
 
 }

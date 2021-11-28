@@ -20,8 +20,8 @@ class ContactsFragment : Fragment(){
     private lateinit var binding: FragmentContactsBinding
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<Contacts>
-    lateinit var contactsName: Array<String>
-    lateinit var contactsPK: Array<String>
+//    lateinit var contactsName: ArrayList<String>
+//    lateinit var contactsPK: ArrayList<String>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         contactsViewModel =
@@ -34,22 +34,28 @@ class ContactsFragment : Fragment(){
         )
         binding.contactsModel = contactsViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        contactsViewModel.receivers.observe(viewLifecycleOwner, { receiverList ->
+            val contactsName = arrayListOf<String>()
+            val contactsPK = arrayListOf<String>()
 
-        //TODO(Napojit na DB)
-        contactsName = arrayOf("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","2")
-        contactsPK = arrayOf("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","3")
+//            contactsName = array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","2")
+//            contactsPK = array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","3")
+            for (r in receiverList){
+                contactsName.add(r.Name)
+                contactsPK.add(r.Address)
+            }
 
-        newRecyclerView = binding.contactsRecyclerView
-        newRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        newRecyclerView.setHasFixedSize(true)
+            newRecyclerView = binding.contactsRecyclerView
+            newRecyclerView.layoutManager = LinearLayoutManager(this.context)
+            newRecyclerView.setHasFixedSize(true)
 
-        newArrayList = arrayListOf<Contacts>()
-        for (i in contactsName.indices){
-            val contacts = Contacts(contactsName[i], contactsPK[i])
-            newArrayList.add(contacts)
-        }
-        newRecyclerView.adapter = ContactsAdapter(newArrayList)
-
+            newArrayList = arrayListOf<Contacts>()
+            for (i in contactsName.indices){
+                val contacts = Contacts(contactsName[i], contactsPK[i])
+                newArrayList.add(contacts)
+            }
+            newRecyclerView.adapter = ContactsAdapter(newArrayList)
+        })
         return binding.root
     }
 
