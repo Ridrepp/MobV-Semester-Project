@@ -3,6 +3,7 @@ package com.example.semester_project_crypto_wallet.ui
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
+import android.util.Log
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -17,9 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -44,16 +42,14 @@ class MainActivity : AppCompatActivity() {
             )
         )
     }
+
     override fun onSupportNavigateUp(): Boolean {
-        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
+        onBackPressed()
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
-            R.id.homeFragment -> {
-                return true
-            }
-        }
+        Log.i("onOptionsItemSelected", item.itemId.toString())
         return super.onOptionsItemSelected(item)
     }
 

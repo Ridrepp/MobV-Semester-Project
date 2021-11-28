@@ -1,5 +1,6 @@
 package com.example.semester_project_crypto_wallet.ui.logged_in
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,23 +25,12 @@ class LoggedInFragment : Fragment() {
     private lateinit var loggedInViewModel: LoggedInViewModel
     private lateinit var binding: FragmentLoggedInBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val activity = activity as? MainActivity
-//        activity?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Log.i("CALLBACK HANDLE BACK", "HERE")
-            }
-        })
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         loggedInViewModel =
             ViewModelProvider(
                 this,
@@ -61,7 +51,6 @@ class LoggedInFragment : Fragment() {
                 binding.balanceTextView.text = getString(R.string.xlm,it.toString())
             })
         })
-
 
         loggedInViewModel.countCredentials.observe(
             viewLifecycleOwner,
@@ -96,14 +85,5 @@ class LoggedInFragment : Fragment() {
             Toast.makeText(context, "Konto bolo úspešne odhlásené.", Toast.LENGTH_LONG).show()
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
         }
-    }
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.loggedInFragment -> {
-                Log.i("OnContextItemSelected", "HERE")
-                return true
-            }
-        }
-        return super.onContextItemSelected(item)
     }
 }
