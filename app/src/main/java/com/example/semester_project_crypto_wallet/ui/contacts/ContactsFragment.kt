@@ -20,8 +20,6 @@ class ContactsFragment : Fragment(){
     private lateinit var binding: FragmentContactsBinding
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<Contacts>
-//    lateinit var contactsName: ArrayList<String>
-//    lateinit var contactsPK: ArrayList<String>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         contactsViewModel =
@@ -38,8 +36,6 @@ class ContactsFragment : Fragment(){
             val contactsName = arrayListOf<String>()
             val contactsPK = arrayListOf<String>()
 
-//            contactsName = array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","2")
-//            contactsPK = array("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","3")
             for (r in receiverList){
                 contactsName.add(r.Name)
                 contactsPK.add(r.Address)

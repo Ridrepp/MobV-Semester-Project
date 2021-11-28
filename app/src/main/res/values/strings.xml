@@ -28,4 +28,8 @@
     <string name="xlm">XLM %1$s</string>
     <string name="name">Name:</string>
     <string name="public_key">Public Key:</string>
+    <string name="sourceTV">Source:</string>
+    <string name="destinationTV">Destination:</string>
+    <string name="amountTV">Amount:</string>
+    <string name="payment_feeTV">Payment fee:</string>
 </resources>
