@@ -25,4 +25,5 @@
     <string name="log_out">Log out</string>
     <string name="contactName">Name of contact</string>
     <string name="contacts">Contacts</string>
+    <string name="xlm">XLM %1$s</string>
 </resources>

@@ -72,7 +72,7 @@ class SignInFragment : Fragment() {
             }else if(!signInViewModel.validatePublicKey()){
                 Toast.makeText(context, "Chybny public key", Toast.LENGTH_LONG).show()
             }else if(!signInViewModel.validatePinKey()){
-                Toast.makeText(context, "kratky pin", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Kratky pin", Toast.LENGTH_LONG).show()
             }else{
                 signInViewModel.insertUserToDb()
                 findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)

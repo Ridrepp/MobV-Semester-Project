@@ -27,7 +27,6 @@
             android:layout_marginTop="120dp"
             android:paddingStart="0dp"
             android:paddingEnd="10dp"
-            android:text="@string/balanceTextView"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"

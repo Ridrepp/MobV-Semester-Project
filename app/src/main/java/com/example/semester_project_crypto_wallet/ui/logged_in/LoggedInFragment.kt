@@ -36,11 +36,19 @@ class LoggedInFragment : Fragment() {
         binding.loggedInModel = loggedInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        loggedInViewModel.publicKey.observe(viewLifecycleOwner, {
+            loggedInViewModel.insertBalanceToDb(it)
+            loggedInViewModel.balance.observe(viewLifecycleOwner, {
+                binding.balanceTextView.text = getString(R.string.xlm,it.toString())
+            })
+        })
+
+
         loggedInViewModel.countCredentials.observe(
             viewLifecycleOwner,
             {
-                if (it==0) {
-                    Toast.makeText(context,"Konto bolo odhlásené.", Toast.LENGTH_LONG).show()
+                if (it == 0) {
+                    Toast.makeText(context, "Konto bolo odhlásené.", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
                 }
             }

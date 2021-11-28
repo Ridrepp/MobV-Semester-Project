@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.semester_project_crypto_wallet.R
+import com.example.semester_project_crypto_wallet.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,17 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val jarko = "testujemAES"
-        val encryptedjarko = AES.encrypt(jarko,"1234")
-        val decrypredjarko = AES.decrypt(encryptedjarko, "1234")
 
-        Log.i("ORIGINAL: ", jarko)
-        if (encryptedjarko != null) {
-            Log.i("ENCRYPTED: ", encryptedjarko)
-        }
-        if (decrypredjarko != null) {
-            Log.i("DECRYPTED: ", decrypredjarko)
-        }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -37,6 +28,17 @@ class MainActivity : AppCompatActivity() {
         // Changing policy because of response from Stellar server
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
+
+
+        // TESTING AREA
+
+//        val user = User()
+//        user.generateKeys()
+//        user.createAccount()
+//        user.checkBalances()
+
+        // TESTING AREA
+
 
         NavigationUI.setupWithNavController(
             nav_view, Navigation.findNavController(

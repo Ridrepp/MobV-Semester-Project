@@ -2,6 +2,7 @@ package com.example.semester_project_crypto_wallet.data
 
 import androidx.lifecycle.LiveData
 import com.example.semester_project_crypto_wallet.data.db.LocalCache
+import com.example.semester_project_crypto_wallet.data.db.entities.Balance
 import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
@@ -30,6 +31,10 @@ class Repository(private val cache: LocalCache) {
 
     suspend fun insertKeyPair(credentials: Credentials) {
         cache.insertKeyPair(credentials)
+    }
+
+    suspend fun insertBalance(balance: Balance){
+        cache.insertBalance(balance)
     }
 
     fun getCountCredentials(): LiveData<Int> = cache.getCountCredentials()

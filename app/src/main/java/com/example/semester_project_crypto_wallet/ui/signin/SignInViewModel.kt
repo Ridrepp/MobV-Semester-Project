@@ -73,6 +73,8 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun insertUserToDb(){
         viewModelScope.launch {
+
+
             val encrypted_secretkey =
                 pinKeyEditText.value?.let { AES.encrypt(privateKeyStrEditText.value.toString(), it) }.toString()
 

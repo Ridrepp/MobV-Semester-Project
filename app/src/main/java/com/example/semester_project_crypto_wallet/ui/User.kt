@@ -41,13 +41,21 @@ class User() {
         val server = Server("https://horizon-testnet.stellar.org")
         val account = server.accounts().account(my_keypair.accountId)
         Log.i("WAR", "Balances for account" + my_keypair.accountId)
+        Log.i("Number of balances:", account.balances.size.toString())
         for (balance in account.balances) {
             Log.i("BALANCE", balance.balance)
             Log.i("ASSETCODE", balance.assetCode.toString())
             Log.i("ASSETTYPE", balance.assetType)
-
         }
+
+        Log.i("BALANCE", account.balances[0].balance)
+        Log.i("BALANCE-TYPE", account.balances[0].balance::class.simpleName.toString())
+
+
+
     }
+
+
 
     fun sendPayment(destination: KeyPair) {
         val server = Server("https://horizon-testnet.stellar.org")
