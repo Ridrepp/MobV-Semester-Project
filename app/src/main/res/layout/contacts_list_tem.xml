@@ -4,23 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="0dp">
+    android:background="@drawable/borders_recycler_view"
+    >
+
+    <TextView
+        android:id="@+id/contactNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:textSize="22sp"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/rvContactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="@id/contactNameText" />
+    <TextView
+        android:id="@+id/publicKeyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:textSize="22sp"
+        android:text="@string/public_key"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rvContactName" />
     <TextView
         android:id="@+id/rvContactPublicKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/rvContactName"
         app:layout_constraintStart_toStartOf="@+id/rvContactName"
-        app:layout_constraintTop_toBottomOf="@+id/rvContactName" />
+        app:layout_constraintTop_toBottomOf="@+id/publicKeyText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
