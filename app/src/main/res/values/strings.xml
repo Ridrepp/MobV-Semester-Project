@@ -23,4 +23,6 @@
     <string name="publicKey">Public Key</string>
     <string name="privateKey">Private Key</string>
     <string name="log_out">Log out</string>
+    <string name="contactName">Name of contact</string>
+    <string name="contacts">Contacts</string>
 </resources>

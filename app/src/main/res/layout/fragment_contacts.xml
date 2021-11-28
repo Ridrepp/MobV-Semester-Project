@@ -56,11 +56,11 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="10"
-            android:labelFor="@id/publicKey"
+            android:hint="@string/publicKey"
             android:text="@={contactsModel.publicKeyStr}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/contactName"
             android:importantForAutofill="no"
             android:inputType="text" />
         <EditText
@@ -68,14 +68,13 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:ems="10"
-            android:labelFor="@id/contactName"
+            android:hint="@string/contactName"
             android:text="@={contactsModel.contactName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/publicKey"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
             android:importantForAutofill="no"
             android:inputType="text" />
-
 
         <Button
             android:id="@+id/addContactButton"
@@ -84,19 +83,18 @@
             android:text="@string/addContact"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contactName" />
+            app:layout_constraintTop_toBottomOf="@+id/publicKey" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contactsRecyclerView"
-            android:layout_width="409dp"
-            android:layout_height="524dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addContactButton"
-            app:layout_constraintVertical_bias="0.0"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layout_constraintTop_toBottomOf="@+id/addContactButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
