@@ -31,6 +31,11 @@ class LoggedInViewModel(
             repository.clearCredentials()}
     }
 
+    fun deleteBalance(){
+        viewModelScope.launch{
+            repository.clearBalance()}
+    }
+
     fun getXLMbalance(publicKey: String): Float {
         val server = Server("https://horizon-testnet.stellar.org")
         Log.i("IS THIS IT?", publicKey)

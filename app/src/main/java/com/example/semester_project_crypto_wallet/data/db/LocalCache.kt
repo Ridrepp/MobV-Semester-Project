@@ -11,6 +11,8 @@ class LocalCache(private val dao: DbDao) {
     //Balance
     fun getBalance(): LiveData<Float> = dao.getBalance()
 
+    suspend fun clearBalance() = dao.clearBalance()
+
     suspend fun insertBalance(balance: Balance){
         dao.insertBalance(balance)
     }

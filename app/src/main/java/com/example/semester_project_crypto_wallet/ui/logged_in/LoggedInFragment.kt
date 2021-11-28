@@ -75,6 +75,7 @@ class LoggedInFragment : Fragment() {
         binding.loggedOutButton.setOnClickListener {
             lifecycleScope.launch {
                 loggedInViewModel.deleteUsers()
+                loggedInViewModel.deleteBalance()
             }
             Toast.makeText(context, "Konto bolo úspešne odhlásené.", Toast.LENGTH_LONG).show()
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)

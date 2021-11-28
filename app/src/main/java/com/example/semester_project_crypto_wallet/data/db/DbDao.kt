@@ -16,6 +16,9 @@ interface DbDao {
     @Query("SELECT * from balance_table")
     fun getBalance(): LiveData<Float>
 
+    @Query("DELETE FROM balance_table")
+    suspend fun clearBalance()
+
     //Keypair
     @Query("SELECT publicKey from credentials_table")
     fun getPublicKey(): LiveData<String>

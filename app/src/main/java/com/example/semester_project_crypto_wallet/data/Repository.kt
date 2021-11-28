@@ -24,6 +24,8 @@ class Repository(private val cache: LocalCache) {
     //Balance
     fun getBalance(): LiveData<Float> = cache.getBalance()
 
+    suspend fun clearBalance() = cache.clearBalance()
+
     //Keypair
     fun getPublicKey(): LiveData<String> = cache.getPublicKey()
 
