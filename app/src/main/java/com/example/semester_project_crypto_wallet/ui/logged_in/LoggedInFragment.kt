@@ -37,6 +37,8 @@ class LoggedInFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         loggedInViewModel.publicKey.observe(viewLifecycleOwner, {
+            if (it == null)
+                return@observe
             loggedInViewModel.insertBalanceToDb(it)
             loggedInViewModel.balance.observe(viewLifecycleOwner, {
                 binding.balanceTextView.text = getString(R.string.xlm,it.toString())
