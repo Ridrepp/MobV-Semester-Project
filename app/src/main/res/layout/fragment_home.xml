@@ -46,40 +46,6 @@
             app:layout_constraintEnd_toEndOf="@+id/signinButton"
             app:layout_constraintStart_toStartOf="@+id/signinButton"
             app:layout_constraintTop_toBottomOf="@+id/signinButton" />
-        <!--        <Button-->
-<!--            android:id="@+id/createAccount"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/create_account"-->
-<!--            android:textAlignment="center" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/create_new_pair" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/transactionsButton"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/transactionsButton" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/public_key"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="200dp"-->
-<!--            android:text="@string/pairKontoPublic" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/private_key"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="@string/pairKontoPrivate" />-->
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

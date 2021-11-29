@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/signInTextView"
             android:layout_width="match_parent"
@@ -38,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-
             android:hint="@string/publicKey"
             android:importantForAutofill="no"
             android:inputType="text"
@@ -47,10 +47,8 @@
             android:text="@={signInModel.publicKeyStrEditText}"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/divider"/>
 
         <EditText
             android:id="@+id/privateKeyText"
@@ -66,8 +64,7 @@
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/publicKeyText"
-/>
+            app:layout_constraintTop_toTopOf="@id/publicKeyText"/>
 
         <EditText
             android:id="@+id/pinText"
@@ -97,19 +94,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pinText" />
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar"-->
-<!--            android:layout_width="409dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/myColor"-->
-<!--            android:minHeight="?attr/actionBarSize"-->
-<!--            android:theme="?attr/actionBarTheme"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:text="@string/app_name">-->
-<!--            <TextView android:layout_height="match_parent"  -->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:text="@string/title"/>-->
-<!--            </androidx.appcompat.widget.Toolbar>-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

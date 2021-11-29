@@ -18,8 +18,8 @@
             android:src="@drawable/stellar_logo"
             android:contentDescription="@string/logo_stellar_wallet"
             app:layout_constraintBottom_toTopOf="@+id/balanceTextView">
-
         </ImageView>
+
         <TextView
             android:id="@+id/balanceTextView"
             android:layout_width="match_parent"
@@ -33,7 +33,6 @@
             app:layout_constraintBottom_toTopOf="@+id/transactionsButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <Button
             android:id="@+id/transactionsButton"
@@ -64,6 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addContactButton" />
+
         <Button
             android:id="@+id/loggedOutButton"
             android:layout_width="wrap_content"

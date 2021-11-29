@@ -36,17 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transactionsTextView" />
 
-<!--        <Button-->
-<!--            android:id="@+id/showTransactions"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/showTransactionsButton"-->
-<!--            android:textAlignment="center"-->
-<!--            android:layout_margin="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/divider" />-->
-
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
@@ -66,16 +55,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginLeft="40dp"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:layout_marginBottom="60dp"-->
-<!--            android:layout_marginRight="40dp"-->
-<!--            android:text="@{txViewModel.transactions_as_text}"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

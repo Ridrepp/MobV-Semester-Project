@@ -81,10 +81,10 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         val contacts: MutableList<String> = ArrayList()
 
         val dataAdapter: ArrayAdapter<String> =
-            ArrayAdapter<String>(this.requireContext(), R.layout.color_spinner_layout, contacts)
+            ArrayAdapter<String>(this.requireContext(), R.layout.spinner_color_layout, contacts)
 
 
-        dataAdapter.setDropDownViewResource(R.layout.color_spinner_layout)
+        dataAdapter.setDropDownViewResource(R.layout.spinner_color_layout)
         paymentsViewModel.receivers.observe(viewLifecycleOwner, { receiverName ->
             receiverName.forEach{
                 dataAdapter.add(it.Name)

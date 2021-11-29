@@ -22,7 +22,7 @@
             android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="46dp" />
+            tools:layout_editor_absoluteX="46dp"/>
 
         <View
             android:id="@+id/divider"
@@ -32,7 +32,7 @@
             android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/registerTextView"/>
         <TextView
             android:id="@+id/publicKeyText"
             android:layout_width="wrap_content"
@@ -45,8 +45,7 @@
             android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/divider"/>
 
         <TextView
             android:id="@+id/privateKeyText"
@@ -60,8 +59,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/publicKeyText"
-        />
+            app:layout_constraintTop_toBottomOf="@+id/publicKeyText"/>
 
         <Button
             android:id="@+id/generateKeys"
@@ -72,7 +70,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/registerTextView" />
+            app:layout_constraintTop_toTopOf="@+id/registerTextView"/>
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -90,8 +88,7 @@
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/generateKeys" />
-
+            app:layout_constraintTop_toBottomOf="@+id/generateKeys"/>
 
         <Button
             android:id="@+id/confirmRegister"
@@ -101,6 +98,7 @@
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditText"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
