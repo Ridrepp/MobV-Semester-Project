@@ -56,7 +56,7 @@ class WebApi() {
         Log.i("BALANCE-TYPE", account.balances[0].balance::class.simpleName.toString())
     }
 
-    fun sendPayment(destination: KeyPair, my_keypair : KeyPair) {
+    fun sendPayment(destination: KeyPair, my_keypair : KeyPair, amount: Float) {
         val server = Server("https://horizon-testnet.stellar.org")
 
         server.accounts().account(destination.accountId)
@@ -67,7 +67,7 @@ class WebApi() {
             PaymentOperation.Builder(
                 destination.accountId,
                 AssetTypeNative(),
-                "10"
+                amount.toString()
             ).build()
         )
             .addMemo(Memo.text("TESTING TRANSACTION"))

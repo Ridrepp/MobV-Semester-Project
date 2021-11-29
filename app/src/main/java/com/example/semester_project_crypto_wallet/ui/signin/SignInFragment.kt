@@ -71,6 +71,8 @@ class SignInFragment : Fragment() {
                 Toast.makeText(context, "Chybaju udaje", Toast.LENGTH_LONG).show()
             }else if(!signInViewModel.validatePublicKey()){
                 Toast.makeText(context, "Chybny public key", Toast.LENGTH_LONG).show()
+                // TODO: validate private key
+                // KeyPair.canSign() -> Returns true if this Keypair is capable of signing
             }else if(!signInViewModel.validatePinKey()){
                 Toast.makeText(context, "Kratky pin", Toast.LENGTH_LONG).show()
             }else{
