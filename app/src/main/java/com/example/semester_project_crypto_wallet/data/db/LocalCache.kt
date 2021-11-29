@@ -1,53 +1,45 @@
 package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.lifecycle.LiveData
-import com.example.semester_project_crypto_wallet.data.db.entities.Balance
-import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
-import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
-import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
+import androidx.room.Insert
+import androidx.room.Query
+import com.example.semester_project_crypto_wallet.data.db.entities.*
 
 class LocalCache(private val dao: DbDao) {
 
-    //Balance
-    fun getBalance(): LiveData<Float> = dao.getBalance()
+    //Receiver
+    fun getReceivers(): LiveData<List<Receiver>> = dao.getReceivers()
 
-    suspend fun clearBalance() = dao.clearBalance()
-
-    suspend fun insertBalance(balance: Balance){
-        dao.insertBalance(balance)
+    suspend fun insertReceiver(receiver: Receiver) {
+        dao.insertReceiver(receiver)
     }
 
-    //Keypair
-    fun getPublicKey(): LiveData<String> = dao.getPublicKey()
-
-    fun getPrivateKey(): LiveData<String> = dao.getPrivateKey()
-
-    fun getCountCredentials(): LiveData<Int> = dao.getCountCredentials()
-
-    suspend fun insertKeyPair(credentials: Credentials) {
-        dao.insertKeyPair(credentials)
-    }
-
-
-
-    fun getCredentials(): LiveData<List<Credentials>> = dao.getCredentials()
-
-    fun findKeyCredentials(findKey: String): LiveData<Credentials> = dao.findKeyCredentials(findKey)
-
-    suspend fun clearCredentials() = dao.clearCredentials()
-
-    //Transactions
+    //Transaction
     fun getTransactions(): LiveData<List<Transaction>> = dao.getTransactions()
 
     suspend fun insertTransaction(transaction: Transaction) {
         dao.insertTransaction(transaction)
     }
 
-    //Receivers
-    fun getReceivers(): LiveData<List<Receiver>> = dao.getReceivers()
+    //Wallet
+    fun getWallet(): LiveData<Wallet> = dao.getWallet()
 
-    suspend fun insertReceiver(receiver: Receiver) {
-        dao.insertReceiver(receiver)
+    fun getPublicKey(): LiveData<String> = dao.getPublicKey()
+
+    fun getPrivateKey(): LiveData<String> = dao.getPrivateKey()
+
+    fun getBalance(): LiveData<Float> = dao.getBalance()
+
+    suspend fun updateBalance(balance: Float?, publicKey: String){
+        dao.updateBalance(balance, publicKey)
     }
+
+    fun getCountCredentials(): LiveData<Int> = dao.getCountCredentials()
+
+    suspend fun insertWallet(wallet: Wallet){
+        dao.insertWallet(wallet)
+    }
+
+    suspend fun deleteWallet() = dao.deleteWallet()
 
 }

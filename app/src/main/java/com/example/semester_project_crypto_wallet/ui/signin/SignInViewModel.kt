@@ -5,10 +5,9 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.*
 import com.example.semester_project_crypto_wallet.data.Repository
-import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
 import com.example.semester_project_crypto_wallet.ui.AES
 import kotlinx.coroutines.launch
-import android.widget.Toast
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 import org.stellar.sdk.Server
 import org.stellar.sdk.*
 import org.stellar.sdk.requests.ErrorResponse
@@ -79,7 +78,7 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
                 pinKeyEditText.value?.let { AES.encrypt(privateKeyStrEditText.value.toString(), it) }.toString()
 
             try {
-                repository.insertKeyPair(Credentials(publicKeyStrEditText.value.toString(),encrypted_secretkey))
+                repository.insertWallet(Wallet(publicKeyStrEditText.value.toString(),encrypted_secretkey,0.toFloat()))
                 Log.i("***", "*****REGISTRATION SUCCESSFUL******")
             } catch (e: Exception) {
                 Log.i("EXCEPTION", e.toString())

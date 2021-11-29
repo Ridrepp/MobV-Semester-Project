@@ -43,9 +43,11 @@ class LoggedInFragment : Fragment() {
         binding.loggedInModel = loggedInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        //TODO: resolve observer updating balance in loop (skipping ~35 frames on every iteration)
         loggedInViewModel.publicKey.observe(viewLifecycleOwner, {
             if (it == null)
                 return@observe
+//            Log.i("mobv", "LoggedInFragment: onCreateView: publicKey: $it")
             loggedInViewModel.insertBalanceToDb(it)
             loggedInViewModel.balance.observe(viewLifecycleOwner, {
                 binding.balanceTextView.text = getString(R.string.xlm,it.toString())
@@ -56,7 +58,7 @@ class LoggedInFragment : Fragment() {
             viewLifecycleOwner,
             {
                 if (it == 0) {
-                    Toast.makeText(context, "Konto bolo odhlásené.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Missing wallet!", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
                 }
             }
@@ -79,10 +81,9 @@ class LoggedInFragment : Fragment() {
         }
         binding.loggedOutButton.setOnClickListener {
             lifecycleScope.launch {
-                loggedInViewModel.deleteUsers()
-                loggedInViewModel.deleteBalance()
+                loggedInViewModel.deleteWallet()
             }
-            Toast.makeText(context, "Konto bolo úspešne odhlásené.", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Wallet was deleted!", Toast.LENGTH_LONG).show()
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
         }
     }

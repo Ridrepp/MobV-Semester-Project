@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "receivers_table")
+@Entity(tableName = "receivers")
 data class Receiver (
 
     @PrimaryKey(autoGenerate = false)

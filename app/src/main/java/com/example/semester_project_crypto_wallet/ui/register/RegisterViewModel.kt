@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.semester_project_crypto_wallet.User
 import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.data.api.WebApi
-import com.example.semester_project_crypto_wallet.data.db.entities.Credentials
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 import com.example.semester_project_crypto_wallet.ui.AES
 import kotlinx.coroutines.launch
 import org.stellar.sdk.KeyPair
@@ -48,7 +48,8 @@ class RegisterViewModel(
             val encrypted_secretkey = pin.value?.let { AES.encrypt(String(my_keypair.secretSeed), it) }.toString()
 
             try {
-                repository.insertKeyPair(Credentials(my_keypair.accountId,encrypted_secretkey))
+//                repository.insertKeyPair(Credentials(my_keypair.accountId,encrypted_secretkey))
+                repository.insertWallet(Wallet(my_keypair.accountId,encrypted_secretkey,0.toFloat()))
                 Log.i("***", "*****REGISTRATION SUCCESSFUL******")
             } catch (e: Exception) {
                 Log.i("EXCEPTION", e.toString())

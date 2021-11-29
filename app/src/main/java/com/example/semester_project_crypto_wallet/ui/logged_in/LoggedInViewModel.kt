@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.semester_project_crypto_wallet.User
 import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.data.api.WebApi
-import com.example.semester_project_crypto_wallet.data.db.entities.Balance
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 import kotlinx.coroutines.launch
 import org.stellar.sdk.Server
 
@@ -30,22 +30,26 @@ class LoggedInViewModel(
     val publicKey: LiveData<String>
         get() = repository.getPublicKey()
 
-    fun deleteUsers(){
-        viewModelScope.launch{
-            repository.clearCredentials()}
-    }
+    val wallet: LiveData<Wallet>
+        get() = repository.getWallet()
 
-    fun deleteBalance(){
+    fun deleteWallet(){
         viewModelScope.launch{
-            repository.clearBalance()}
+            repository.deleteWallet()
+        }
     }
 
     fun insertBalanceToDb(publicKey: String){
         viewModelScope.launch {
             try {
-                repository.insertBalance(Balance(api.getXLMbalance(publicKey)))
-                Log.i("***", "*****BALANCE SAVED SUCCESSFULLY******")
+                val balance: Float = api.getXLMbalance(publicKey)
+                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: balance: $balance")
+
+                repository.updateBalance(balance, publicKey)
+
+                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: BALANCE SAVED SUCCESSFULLY")
             }catch (e: Exception){
+                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: failed")
                 Log.i("EXCEPTION", e.toString())
             }
         }

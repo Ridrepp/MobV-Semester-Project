@@ -4,13 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "credentials_table")
-data class Credentials (
-
+@Entity(tableName = "wallet")
+data class Wallet (
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "publicKey")
     var publicKey: String,
 
     @ColumnInfo(name = "privateKey")
-    val privateKey: String
+    val privateKey: String,
+
+    @ColumnInfo(name = "balance")
+    var balance: Float
 )
