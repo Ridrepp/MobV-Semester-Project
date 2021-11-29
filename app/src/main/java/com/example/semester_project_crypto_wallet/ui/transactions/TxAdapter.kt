@@ -20,6 +20,7 @@ class TxAdapter(private val transactionList: ArrayList<Tx>):
                 holder.transactionSource.text = currentItem.transactionSource
                 holder.transactionDestination.text = currentItem.transactionDestination
                 holder.transactionAmount.text = currentItem.transactionAmount
+                holder.transactionID.text = currentItem.transactionID
             }
 
             override fun getItemCount(): Int {
@@ -30,5 +31,6 @@ class TxAdapter(private val transactionList: ArrayList<Tx>):
                 val transactionSource : TextView = itemView.findViewById(R.id.textView_source)
                 val transactionDestination : TextView = itemView.findViewById(R.id.textView_destination)
                 val transactionAmount : TextView = itemView.findViewById(R.id.textView_amount)
+                val transactionID : TextView = itemView.findViewById(R.id.textView_id)
             }
         }

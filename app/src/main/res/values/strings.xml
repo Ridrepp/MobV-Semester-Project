@@ -32,4 +32,5 @@
     <string name="destinationTV">Destination:</string>
     <string name="amountTV">Amount:</string>
     <string name="payment_feeTV">Payment fee:</string>
+    <string name="payment_idTV">Payment ID</string>
 </resources>

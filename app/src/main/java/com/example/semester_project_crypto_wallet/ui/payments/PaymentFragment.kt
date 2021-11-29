@@ -44,24 +44,24 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                         receiverName.forEach{
 //                            Log.i("mobv", "PaymentFragment: it.Name:" + it.Name)
                             if(it.Name == selectedReceiverName){
-                                var receiverPublicKey = it.Address
+                                val receiverPublicKey = it.Address
 //                                Log.i("mobv", "PaymentFragment: it.Address:" + it.Address)
 //                                Log.i("mobv", "PaymentFragment: receiverPublicKey: $receiverPublicKey")
                                 paymentsViewModel.wallet.observe(
                                     viewLifecycleOwner,
                                     {
-                                        paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey)
+                                        if (!paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey)){
+                                            Toast.makeText(context, "Payment failed.", Toast.LENGTH_SHORT).show()
+                                        }
+                                        else{
+                                            Log.i("mobv", "PaymentFragment: Payment done")
+                                            Toast.makeText(context,"Payment was successful.", Toast.LENGTH_SHORT).show()
+                                        }
                                     }
                                 )
                             }
                         }
                     })
-                    Log.i("mobv", "PaymentFragment: Payment done")
-                    Toast.makeText(
-                        context,
-                        "Payment done",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }else{
                     Log.i("mobv", "PaymentFragment: PIN bad")
                     Toast.makeText(

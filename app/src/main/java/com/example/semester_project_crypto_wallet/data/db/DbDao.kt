@@ -5,7 +5,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.semester_project_crypto_wallet.data.db.entities.*
+import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 
 @Dao
 interface DbDao {
@@ -21,7 +23,7 @@ interface DbDao {
     @Query("SELECT * from transactions")
     fun getTransactions(): LiveData<List<Transaction>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTransaction(transaction: Transaction)
 
     //Wallet

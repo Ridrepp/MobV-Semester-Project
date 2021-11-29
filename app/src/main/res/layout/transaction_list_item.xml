@@ -42,12 +42,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_destination" />
 
     <TextView
-        android:id="@+id/textViewF"
+        android:id="@+id/textViewI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="22sp"
-        android:text="@string/payment_feeTV"
+        android:text="@string/payment_idTV"
         android:textColor="@color/logoGreen"
         app:layout_constraintStart_toStartOf="@+id/textViewS"
         app:layout_constraintTop_toBottomOf="@+id/textView_amount" />
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewA" />
 
     <TextView
-        android:id="@+id/textView_fee"
+        android:id="@+id/textView_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -97,6 +97,6 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/textViewF"
-        app:layout_constraintTop_toBottomOf="@+id/textViewF" />
+        app:layout_constraintStart_toStartOf="@+id/textViewI"
+        app:layout_constraintTop_toBottomOf="@+id/textViewI" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,26 +35,34 @@ class PaymentsViewModel(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String, destinationPublicKey: String) {
+    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String, destinationPublicKey: String):Boolean {
+        try {
+
         Log.i("mobv", "PaymentsViewModel: sendPayment()")
 
-        val pin = pin.value.toString()
-        val amount = amount.value.toString()
-        val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
-        val destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
+            val pin = pin.value.toString()
+            val amount = amount.value.toString()
+            val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
+            val destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
 
-//        Log.i("mobv", sourcePublicKey)
-//        Log.i("mobv", sourcePrivateKey)
-//        Log.i("mobv", destinationPublicKey)
-//        Log.i("mobv", pin)
-//        Log.i("mobv", amount)
-//        Log.i("mobv", my_keypair.accountId)
-//        Log.i("mobv", String(my_keypair.secretSeed))
-//        Log.i("mobv", my_keypair.canSign().toString())
-//        Log.i("mobv", destination_keypair.accountId)
-//        Log.i("mobv", destination_keypair.canSign().toString())
+    //        Log.i("mobv", sourcePublicKey)
+    //        Log.i("mobv", sourcePrivateKey)
+    //        Log.i("mobv", destinationPublicKey)
+    //        Log.i("mobv", pin)
+    //        Log.i("mobv", amount)
+    //        Log.i("mobv", my_keypair.accountId)
+    //        Log.i("mobv", String(my_keypair.secretSeed))
+    //        Log.i("mobv", my_keypair.canSign().toString())
+    //        Log.i("mobv", destination_keypair.accountId)
+    //        Log.i("mobv", destination_keypair.canSign().toString())
+            api.sendPayment(destination_keypair, my_keypair, amount)
 
-        api.sendPayment(destination_keypair, my_keypair, amount)
+            return true
+        }
+        catch (e: Exception){
+            Log.i("sendPaymentErr", e.toString())
+            return false
+        }
     }
 
 }
