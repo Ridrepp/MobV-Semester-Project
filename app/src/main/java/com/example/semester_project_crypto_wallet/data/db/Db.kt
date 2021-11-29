@@ -13,7 +13,7 @@ import com.example.semester_project_crypto_wallet.data.db.entities.*
         Receiver::class,
         Wallet::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = false)
 abstract class Db : RoomDatabase() {
 

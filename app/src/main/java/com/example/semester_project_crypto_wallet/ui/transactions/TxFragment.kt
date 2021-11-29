@@ -43,7 +43,7 @@ class TxFragment : Fragment() {
         binding.txViewModel = txViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         txViewModel.publicKey.observe(viewLifecycleOwner,{publicKeyToServer->
-            txViewModel.insertTransactionsToDatabase(publicKeyToServer)
+            txViewModel.addPaymentsToDB(publicKeyToServer)
 
         })
 //        lifecycleScope.launch {
@@ -53,13 +53,12 @@ class TxFragment : Fragment() {
             val transactionSource = arrayListOf<String>()
             val transactionDestination = arrayListOf<String>()
             val transactionAmount = arrayListOf<String>()
-            val transactionFee = arrayListOf<String>()
+
 
             for (r in transactionList){
                 transactionSource.add(r.Source)
                 transactionDestination.add(r.Destination)
                 transactionAmount.add(r.Amount)
-                transactionFee.add(r.Fee)
             }
 
             newRecyclerView = binding.transactionsRecyclerView
@@ -68,7 +67,7 @@ class TxFragment : Fragment() {
 
             newArrayList = arrayListOf<Tx>()
             for (i in transactionSource.indices){
-                val tx = Tx(transactionSource[i], transactionDestination[i], transactionAmount[i], transactionFee[i])
+                val tx = Tx(transactionSource[i], transactionDestination[i], transactionAmount[i])
                 newArrayList.add(tx)
             }
             newRecyclerView.adapter = TxAdapter(newArrayList)

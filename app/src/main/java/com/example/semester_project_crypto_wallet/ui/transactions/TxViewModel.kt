@@ -9,6 +9,7 @@ import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.data.api.WebApi
 import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
 import kotlinx.coroutines.launch
+import org.stellar.sdk.responses.operations.PaymentOperationResponse
 
 
 class TxViewModel (
@@ -32,12 +33,23 @@ class TxViewModel (
         transactions_text
     }
 
-    fun getTransactionFromServer(publicKey: String){
+    fun addPaymentsToDB(publicKey: String) {
         viewModelScope.launch {
             try {
                 Log.i("TxViewModel", "correct")
                 val response = api.getTransactionsFromServer(publicKey)
-//                Log.i("responseTxViewModel", response.toString())
+//                lateinit var all_payments: MutableList<Transaction>
+
+
+                // TODO: SOMETHING WRONG HERE, ONLY INSERTING FIRST LINE OF PaymentOperationResponse TO DB
+                if (response != null) {
+                    for (resp in response.records ) {
+                        if (resp is PaymentOperationResponse){
+                            repository.insertTransaction(Transaction(resp.id.toString(), resp.sourceAccount, resp.to, resp.amount))
+                        }}
+                }
+
+
             }catch (e: Exception){
                 Log.i("TxViewModel", "something went wrong")
                 Log.i("EXCEPTION", e.toString())
@@ -45,18 +57,17 @@ class TxViewModel (
         }
 
 
-    }
-
-    fun insertTransactionsToDatabase(publicKey: String){
-        try {
-            val response = getTransactionFromServer(publicKey)
-        }
-        catch (e:java.lang.Exception){
-            Log.i("InsertTransException", e.toString())
-        }
-
 
     }
+
+//    fun insertTransactionsToDatabase(publicKey: String){
+//        try {
+//
+//        }
+//        catch (e:java.lang.Exception){
+//            Log.i("InsertTransException", e.toString())
+//        }
+//    }
 
     fun showTransactions() {
         viewModelScope.launch { Log.i("getTransactions()", repository.getTransactions().toString()) }
