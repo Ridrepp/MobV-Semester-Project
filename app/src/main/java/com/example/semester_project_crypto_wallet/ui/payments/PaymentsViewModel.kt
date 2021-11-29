@@ -41,7 +41,7 @@ class PaymentsViewModel(
         val pin = pin.value.toString()
         val amount = amount.value.toString()
         val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
-        var destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
+        val destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
 
 //        Log.i("mobv", sourcePublicKey)
 //        Log.i("mobv", sourcePrivateKey)

@@ -8,6 +8,9 @@ import java.io.InputStream
 import java.net.URL
 import java.util.*
 
+
+
+
 class WebApi() {
 
     fun generateKeys():KeyPair{
@@ -88,8 +91,13 @@ class WebApi() {
         }
     }
 
-    fun getTransactions(publicKey: String) {
+    fun getTransactionsFromServer(publicKey: String){
         val server = Server("https://horizon-testnet.stellar.org")
-        val account = server.accounts().account(publicKey)
+        val responseFromServer = server.payments().forAccount(publicKey).cursor("now").execute()
+        for (resp in responseFromServer.records) {
+            Log.i("getTransFromServer",resp.sourceAccount)
+            Log.i("getTransFromServer",resp.id.toString())
+        }
+
     }
 }

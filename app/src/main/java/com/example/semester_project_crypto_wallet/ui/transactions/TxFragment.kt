@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentTransactionsBinding
-import kotlinx.coroutines.launch
 
 class TxFragment : Fragment() {
 
@@ -44,11 +42,13 @@ class TxFragment : Fragment() {
 
         binding.txViewModel = txViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        txViewModel.publicKey.observe(viewLifecycleOwner,{publicKeyToServer->
+            txViewModel.insertTransactionsToDatabase(publicKeyToServer)
 
-        lifecycleScope.launch {
-            txViewModel.showTransactions()
-        }
-
+        })
+//        lifecycleScope.launch {
+//            txViewModel.showTransactions()
+//        }
         txViewModel.transactions.observe(viewLifecycleOwner, { transactionList ->
             val transactionSource = arrayListOf<String>()
             val transactionDestination = arrayListOf<String>()
@@ -73,13 +73,6 @@ class TxFragment : Fragment() {
             }
             newRecyclerView.adapter = TxAdapter(newArrayList)
         })
-
-//        binding.showTransactions.setOnClickListener{
-//            lifecycleScope.launch {
-//                txViewModel.showTransactions()
-//            }
-//        }
-
 
         return binding.root
 
