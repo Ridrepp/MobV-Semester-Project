@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.semester_project_crypto_wallet.data.Repository
+import com.example.semester_project_crypto_wallet.data.api.WebApi
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
 
 class PaymentsViewModel(
@@ -16,19 +17,33 @@ class PaymentsViewModel(
 //    val privateKeyStr: LiveData<String>
 //        get() = repository.getPrivateKey()
 
+    val api: WebApi = WebApi()
+
     val receivers: LiveData<List<Receiver>>
         get() = repository.getReceivers()
-    var publicKeyStr: MutableLiveData<String> = MutableLiveData()
     val pin: MutableLiveData<String> = MutableLiveData()
 
+    var publicKeyStr: MutableLiveData<String> = MutableLiveData()
 
-    fun confirmPin() {
-        pin.value?.let {
-            if (it.isNotEmpty()) {
-                //TODO: process pin
-                Log.i("confirm_pin", it)
-            }
+
+    fun validatePin(): Boolean{
+        Log.i("mobv", "PaymentsViewModel: validatePin(): " + pin.value?.length)
+        if (pin.value?.length == 4){
+            return true
         }
+        return false
+
+//        pin.value?.let {
+//            if (it.isNotEmpty()) {
+//                //TODO: process pin
+//                Log.i("confirm_pin", it)
+//            }
+//        }
+    }
+
+    fun sendPayment() {
+        Log.i("mobv", "PaymentsViewModel: sendPayment()")
+//        api.sendPayment(destination, my_keypair)
     }
 
 }
