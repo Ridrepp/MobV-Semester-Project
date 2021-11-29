@@ -3,6 +3,7 @@ package com.example.semester_project_crypto_wallet.ui.register
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,31 +53,33 @@ class RegisterFragment : Fragment() {
             binding.confirmRegister.isEnabled = true
         }
 
-//        binding.confirmRegister.setOnClickListener{
-//            lifecycleScope.launch {
-//                registerViewModel.confirmPin()
-//            }
-//        }
-
-
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // REGISTER BUTTON LISTENER
+
         binding.confirmRegister.setOnClickListener {
             lifecycleScope.launch {
-                if (!registerViewModel.insertUserToDb()) {
+
+                Log.i("mobv", "RegisterFragment: pressed confirmRegister")
+                if (registerViewModel.validatePin()) {
+                    Log.i("mobv", "RegisterFragment: PIN ok")
+                    registerViewModel.insertUserToDb()
+                    Log.i("mobv", "RegisterFragment: wallet created and user inserted")
+                    it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
+                }else{
+                    Log.i("mobv", "RegisterFragment: PIN bad")
                     Toast.makeText(
                         context,
                         "Nebol zadaný PIN. Nebolo možné zaregistrovať účet.",
                         Toast.LENGTH_SHORT
                     ).show()
-                }else
-                    it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
+                }
+
             }
         }
     }
+
 }
