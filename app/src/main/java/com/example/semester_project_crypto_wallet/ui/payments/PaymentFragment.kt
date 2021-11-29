@@ -38,7 +38,12 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         binding.sendButton.setOnClickListener{
             lifecycleScope.launch {
                 if(paymentsViewModel.validatePin()){
-                    paymentsViewModel.sendPayment()
+                    paymentsViewModel.wallet.observe(
+                        viewLifecycleOwner,
+                        {
+                            paymentsViewModel.sendPayment(it.publicKey, it.privateKey)
+                        }
+                    )
                 }else{
                     Log.i("mobv", "PaymentFragment: PIN bad")
                     Toast.makeText(
@@ -51,18 +56,18 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         }
         binding.contactsDropdown.onItemSelectedListener = this
 
-        paymentsViewModel.publicKey.observe(
-            viewLifecycleOwner,
-            {
-                Log.i("mobv", it)
-            }
-        )
-        paymentsViewModel.privateKey.observe(
-            viewLifecycleOwner,
-            {
-                Log.i("mobv", it)
-            }
-        )
+//        paymentsViewModel.publicKey.observe(
+//            viewLifecycleOwner,
+//            {
+//                Log.i("mobv", it)
+//            }
+//        )
+//        paymentsViewModel.privateKey.observe(
+//            viewLifecycleOwner,
+//            {
+//                Log.i("mobv", it)
+//            }
+//        )
 
         return binding.root
     }

@@ -88,7 +88,8 @@ class WebApi() {
         }
     }
 
-    fun getTransactions(my_keypair : KeyPair) {
-
+    fun getTransactions(publicKey: String) {
+        val server = Server("https://horizon-testnet.stellar.org")
+        val account = server.accounts().account(publicKey)
     }
 }

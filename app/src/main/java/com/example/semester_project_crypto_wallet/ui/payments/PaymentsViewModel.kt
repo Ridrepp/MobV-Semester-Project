@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.example.semester_project_crypto_wallet.data.Repository
 import com.example.semester_project_crypto_wallet.data.api.WebApi
 import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 import com.example.semester_project_crypto_wallet.ui.AES
 import org.stellar.sdk.KeyPair
 
@@ -18,16 +19,12 @@ class PaymentsViewModel(
 
     val api: WebApi = WebApi()
 
+    val wallet: LiveData<Wallet>
+        get() = repository.getWallet()
     val receivers: LiveData<List<Receiver>>
         get() = repository.getReceivers()
     val amount: MutableLiveData<String> = MutableLiveData()
     val pin: MutableLiveData<String> = MutableLiveData()
-
-    val publicKey: LiveData<String>
-        get() = repository.getPublicKey()
-
-    val privateKey: LiveData<String>
-        get() = repository.getPrivateKey()
 
     fun validatePin(): Boolean{
         Log.i("mobv", "PaymentsViewModel: validatePin(): " + pin.value?.length)
@@ -38,13 +35,11 @@ class PaymentsViewModel(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun sendPayment() {
+    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String) {
         Log.i("mobv", "PaymentsViewModel: sendPayment()")
 
         // TODO: destinationPublicKey from drop down
 //        destinationPublicKey =
-        val sourcePublicKey = publicKey.value.toString()
-        val sourcePrivateKey = privateKey.value.toString()
         val pin = pin.value.toString()
         val amount = amount.value.toString()
 
@@ -54,11 +49,12 @@ class PaymentsViewModel(
         Log.i("mobv", amount)
 
 //        var destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
-        val decrypted_secretkey = AES.decrypt(sourcePrivateKey, pin)
-        if (decrypted_secretkey != null) {
-            Log.i("mobv", decrypted_secretkey)
-        }
-//        val my_keypair = KeyPair(sourcePublicKey, decrypted_secretkey)
+        val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
+
+        Log.i("mobv", my_keypair.accountId)
+        Log.i("mobv", String(my_keypair.secretSeed))
+        Log.i("mobv", my_keypair.canSign().toString())
+
         // TODO: constructor requires ed25519
 
 //        api.sendPayment(destination_keypair, my_keypair, amount)
