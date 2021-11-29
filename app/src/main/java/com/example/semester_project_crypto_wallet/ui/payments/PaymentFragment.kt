@@ -38,12 +38,30 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         binding.sendButton.setOnClickListener{
             lifecycleScope.launch {
                 if(paymentsViewModel.validatePin()){
-                    paymentsViewModel.wallet.observe(
-                        viewLifecycleOwner,
-                        {
-                            paymentsViewModel.sendPayment(it.publicKey, it.privateKey)
+                    val selectedReceiverName = binding.contactsDropdown.selectedItem.toString()
+//                    Log.i("mobv", "PaymentFragment: selectedReceiverName: $selectedReceiverName")
+                    paymentsViewModel.receivers.observe(viewLifecycleOwner, { receiverName ->
+                        receiverName.forEach{
+//                            Log.i("mobv", "PaymentFragment: it.Name:" + it.Name)
+                            if(it.Name == selectedReceiverName){
+                                var receiverPublicKey = it.Address
+//                                Log.i("mobv", "PaymentFragment: it.Address:" + it.Address)
+//                                Log.i("mobv", "PaymentFragment: receiverPublicKey: $receiverPublicKey")
+                                paymentsViewModel.wallet.observe(
+                                    viewLifecycleOwner,
+                                    {
+                                        paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey)
+                                    }
+                                )
+                            }
                         }
-                    )
+                    })
+                    Log.i("mobv", "PaymentFragment: Payment done")
+                    Toast.makeText(
+                        context,
+                        "Payment done",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }else{
                     Log.i("mobv", "PaymentFragment: PIN bad")
                     Toast.makeText(
@@ -55,19 +73,6 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
             }
         }
         binding.contactsDropdown.onItemSelectedListener = this
-
-//        paymentsViewModel.publicKey.observe(
-//            viewLifecycleOwner,
-//            {
-//                Log.i("mobv", it)
-//            }
-//        )
-//        paymentsViewModel.privateKey.observe(
-//            viewLifecycleOwner,
-//            {
-//                Log.i("mobv", it)
-//            }
-//        )
 
         return binding.root
     }

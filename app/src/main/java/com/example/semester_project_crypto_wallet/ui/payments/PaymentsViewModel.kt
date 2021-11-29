@@ -35,29 +35,26 @@ class PaymentsViewModel(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String) {
+    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String, destinationPublicKey: String) {
         Log.i("mobv", "PaymentsViewModel: sendPayment()")
 
-        // TODO: destinationPublicKey from drop down
-//        destinationPublicKey =
         val pin = pin.value.toString()
         val amount = amount.value.toString()
-
-        Log.i("mobv", sourcePublicKey)
-        Log.i("mobv", sourcePrivateKey)
-        Log.i("mobv", pin)
-        Log.i("mobv", amount)
-
-//        var destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
         val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
+        var destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
 
-        Log.i("mobv", my_keypair.accountId)
-        Log.i("mobv", String(my_keypair.secretSeed))
-        Log.i("mobv", my_keypair.canSign().toString())
+//        Log.i("mobv", sourcePublicKey)
+//        Log.i("mobv", sourcePrivateKey)
+//        Log.i("mobv", destinationPublicKey)
+//        Log.i("mobv", pin)
+//        Log.i("mobv", amount)
+//        Log.i("mobv", my_keypair.accountId)
+//        Log.i("mobv", String(my_keypair.secretSeed))
+//        Log.i("mobv", my_keypair.canSign().toString())
+//        Log.i("mobv", destination_keypair.accountId)
+//        Log.i("mobv", destination_keypair.canSign().toString())
 
-        // TODO: constructor requires ed25519
-
-//        api.sendPayment(destination_keypair, my_keypair, amount)
+        api.sendPayment(destination_keypair, my_keypair, amount)
     }
 
 }
