@@ -16,6 +16,7 @@
     <color name="green">#0F5C19</color>
     <color name="lightGreen">#32A23F</color>
     <color name="logoGreen">#1FDC33</color>
+    <color name="deleteGreen">#4CAF50</color>
     <color name="darkerWhite">#AAAAAA</color>
 
 </resources>

@@ -50,7 +50,14 @@ class ContactsFragment : Fragment(){
                 val contacts = Contacts(contactsName[i], contactsPK[i])
                 newArrayList.add(contacts)
             }
-            newRecyclerView.adapter = ContactsAdapter(newArrayList)
+            val cAdapter = ContactsAdapter(newArrayList)
+            cAdapter.setOnItemClickListener(object : ContactsAdapter.OnItemClickListener {
+
+                override fun onDeleteClick(position: Int) {
+//                    Log.i("Daco", " " + contactsName[position])
+                }
+            })
+            newRecyclerView.adapter = cAdapter
         })
         return binding.root
     }

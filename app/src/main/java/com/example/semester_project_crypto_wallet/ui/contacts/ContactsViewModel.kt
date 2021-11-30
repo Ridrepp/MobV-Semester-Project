@@ -19,6 +19,4 @@ class ContactsViewModel (private val repository: Repository) : ViewModel(){
             repository.insertReceiver(Receiver(publicKeyStr,contactName))
         }
     }
-
-
 }
