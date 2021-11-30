@@ -33,6 +33,12 @@ class LoggedInViewModel(
         }
     }
 
+    fun deleteTransactions(){
+        viewModelScope.launch {
+            repository.deleteTransactions()
+        }
+    }
+
     fun insertBalanceToDb(publicKey: String){
         viewModelScope.launch {
             try {

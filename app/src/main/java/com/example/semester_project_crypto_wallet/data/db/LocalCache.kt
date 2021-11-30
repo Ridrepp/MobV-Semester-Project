@@ -44,4 +44,6 @@ class LocalCache(private val dao: DbDao) {
 
     suspend fun deleteContact(name: String, address: String) = dao.deleteContact(name, address)
 
+    suspend fun deleteTransactions() = dao.deleteTransactions()
+
 }

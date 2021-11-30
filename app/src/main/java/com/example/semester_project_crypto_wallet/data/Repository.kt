@@ -34,6 +34,8 @@ class Repository(private val cache: LocalCache) {
         cache.insertTransaction(transaction)
     }
 
+    suspend fun deleteTransactions() = cache.deleteTransactions()
+
     //Wallet
     fun getWallet(): LiveData<Wallet> = cache.getWallet()
 
@@ -55,6 +57,8 @@ class Repository(private val cache: LocalCache) {
 
     suspend fun deleteWallet() = cache.deleteWallet()
 
+
+    // Contacts
     suspend fun deleteContact(name: String, address: String) = cache.deleteContact(name, address)
 
 }

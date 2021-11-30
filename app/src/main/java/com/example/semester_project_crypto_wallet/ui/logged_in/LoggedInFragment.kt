@@ -82,8 +82,10 @@ class LoggedInFragment : Fragment() {
         binding.loggedOutButton.setOnClickListener {
             lifecycleScope.launch {
                 loggedInViewModel.deleteWallet()
+                loggedInViewModel.deleteTransactions()
             }
-            Toast.makeText(context, "Wallet was deleted!", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Wallet and transactions were deleted!", Toast.LENGTH_LONG).show()
+
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
         }
     }

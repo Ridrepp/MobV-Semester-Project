@@ -54,4 +54,7 @@ interface DbDao {
     @Query("DELETE FROM receivers WHERE name=:name AND address=:address")
     suspend fun deleteContact(name: String, address: String)
 
+    @Query("DELETE FROM transactions")
+    suspend fun deleteTransactions()
+
 }
