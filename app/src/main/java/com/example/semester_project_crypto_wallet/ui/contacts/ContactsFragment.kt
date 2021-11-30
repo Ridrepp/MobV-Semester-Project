@@ -55,6 +55,7 @@ class ContactsFragment : Fragment(){
 
                 override fun onDeleteClick(position: Int) {
 //                    Log.i("Daco", " " + contactsName[position])
+                    contactsViewModel.deleteContactFromDB(contactsName[position], contactsPK[position])
                 }
             })
             newRecyclerView.adapter = cAdapter

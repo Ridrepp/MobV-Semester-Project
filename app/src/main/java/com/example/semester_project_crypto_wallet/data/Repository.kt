@@ -2,7 +2,9 @@ package com.example.semester_project_crypto_wallet.data
 
 import androidx.lifecycle.LiveData
 import com.example.semester_project_crypto_wallet.data.db.LocalCache
-import com.example.semester_project_crypto_wallet.data.db.entities.*
+import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 
 class Repository(private val cache: LocalCache) {
 
@@ -52,5 +54,7 @@ class Repository(private val cache: LocalCache) {
     }
 
     suspend fun deleteWallet() = cache.deleteWallet()
+
+    suspend fun deleteContact(name: String, address: String) = cache.deleteContact(name, address)
 
 }

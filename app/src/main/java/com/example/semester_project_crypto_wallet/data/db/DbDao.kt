@@ -51,4 +51,7 @@ interface DbDao {
     @Query("DELETE FROM wallet")
     suspend fun deleteWallet()
 
+    @Query("DELETE FROM receivers WHERE name=:name AND address=:address")
+    suspend fun deleteContact(name: String, address: String)
+
 }

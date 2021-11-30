@@ -19,4 +19,10 @@ class ContactsViewModel (private val repository: Repository) : ViewModel(){
             repository.insertReceiver(Receiver(publicKeyStr,contactName))
         }
     }
+
+    fun deleteContactFromDB(name: String, address: String){
+        viewModelScope.launch {
+            repository.deleteContact(name, address)
+        }
+    }
 }

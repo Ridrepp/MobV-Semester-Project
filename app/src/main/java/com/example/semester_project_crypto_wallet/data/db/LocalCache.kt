@@ -1,9 +1,9 @@
 package com.example.semester_project_crypto_wallet.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.Query
-import com.example.semester_project_crypto_wallet.data.db.entities.*
+import com.example.semester_project_crypto_wallet.data.db.entities.Receiver
+import com.example.semester_project_crypto_wallet.data.db.entities.Transaction
+import com.example.semester_project_crypto_wallet.data.db.entities.Wallet
 
 class LocalCache(private val dao: DbDao) {
 
@@ -41,5 +41,7 @@ class LocalCache(private val dao: DbDao) {
     }
 
     suspend fun deleteWallet() = dao.deleteWallet()
+
+    suspend fun deleteContact(name: String, address: String) = dao.deleteContact(name, address)
 
 }
