@@ -1,6 +1,5 @@
 package com.example.semester_project_crypto_wallet.ui.register
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -44,12 +43,13 @@ class RegisterFragment : Fragment() {
         binding.registerModel = registerViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         // GENERATE BUTTON LISTENER
         binding.generateKeys.setOnClickListener {
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
             }
+            binding.publicKeyTextView.visibility = View.VISIBLE
+            binding.privateKeTextView.visibility = View.VISIBLE
             binding.confirmRegister.isEnabled = true
         }
 
@@ -77,9 +77,7 @@ class RegisterFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
         }
     }
-
 }

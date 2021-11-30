@@ -57,8 +57,6 @@ class Repository(private val cache: LocalCache) {
 
     suspend fun deleteWallet() = cache.deleteWallet()
 
-
-    // Contacts
     suspend fun deleteContact(name: String, address: String) = cache.deleteContact(name, address)
 
 }

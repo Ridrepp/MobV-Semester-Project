@@ -33,33 +33,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registerTextView"/>
+
         <TextView
             android:id="@+id/publicKeyText"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:ems="15"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/publicKey"
-            android:layout_marginTop="60dp"
-            android:textColor="@color/white"
+            android:ems="15"
             android:text="@{registerModel.publicKeyStr}"
+            android:textColor="@color/white"
             android:textIsSelectable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"/>
+            app:layout_constraintStart_toStartOf="@+id/publicKeyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/publicKeyTextView" />
 
         <TextView
             android:id="@+id/privateKeyText"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:ems="15"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/privateKey"
-            android:textColor="@color/white"
+            android:ems="15"
             android:text="@{registerModel.privateKeyStr}"
+            android:textColor="@color/white"
             android:textIsSelectable="true"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/publicKeyText"/>
+            app:layout_constraintStart_toStartOf="@+id/publicKeyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/privateKeTextView" />
 
         <Button
             android:id="@+id/generateKeys"
@@ -86,6 +85,7 @@
             android:text="@={registerModel.pin}"
             android:textAlignment="center"
             android:textColorHint="@color/white"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/generateKeys"/>
@@ -99,6 +99,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditText"/>
+
+        <TextView
+            android:id="@+id/publicKeyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/publicKeyTV"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/privateKeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/privateKeyTV"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@+id/publicKeyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/publicKeyText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

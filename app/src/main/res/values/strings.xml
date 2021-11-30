@@ -33,4 +33,6 @@
     <string name="amountTV">Amount:</string>
     <string name="payment_feeTV">Payment fee:</string>
     <string name="payment_idTV">Payment ID</string>
+    <string name="publicKeyTV">Public Key:</string>
+    <string name="privateKeyTV">Private Key:</string>
 </resources>
