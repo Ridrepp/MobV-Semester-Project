@@ -84,7 +84,7 @@ class LoggedInFragment : Fragment() {
                 loggedInViewModel.deleteWallet()
                 loggedInViewModel.deleteTransactions()
             }
-            Toast.makeText(context, "Wallet and transactions were deleted!", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Your wallet was deleted", Toast.LENGTH_LONG).show()
 
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
         }

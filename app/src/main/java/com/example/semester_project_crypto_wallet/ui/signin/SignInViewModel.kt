@@ -16,6 +16,8 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
     val publicKeyStrEditText: MutableLiveData<String> = MutableLiveData()
     val privateKeyStrEditText: MutableLiveData<String> = MutableLiveData()
     val pinKeyEditText: MutableLiveData<String> = MutableLiveData()
+    lateinit var my_keypar: KeyPair
+
 
 //    lateinit var findKeyCredential: LiveData<Credentials>
 //
@@ -62,6 +64,25 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun validatePublicKeyFromPrivateKey() : Boolean {
+        val server = Server("https://horizon-testnet.stellar.org")
+
+        try {
+            val my_keypair = KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString())
+
+            Log.i("PUBLICKEY", my_keypair.accountId.toString())
+            Log.i("PRIVATE KEY", String(my_keypair.secretSeed))
+            server.accounts().account(my_keypair.accountId.toString())
+
+
+        }catch (e: Exception){
+            Log.i("validatePKfromPK()", e.toString())
+        }
+
+        return KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString()).canSign()
+    }
+
     fun validatePinKey() : Boolean{
         if (pinKeyEditText.value?.length == 4){
             return true
@@ -78,7 +99,7 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
                 pinKeyEditText.value?.let { AES.encrypt(privateKeyStrEditText.value.toString(), it) }.toString()
 
             try {
-                repository.insertWallet(Wallet(publicKeyStrEditText.value.toString(),encrypted_secretkey,0.toFloat()))
+                repository.insertWallet(Wallet(KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString()).accountId,encrypted_secretkey,0.toFloat()))
                 Log.i("***", "*****REGISTRATION SUCCESSFUL******")
             } catch (e: Exception) {
                 Log.i("EXCEPTION", e.toString())

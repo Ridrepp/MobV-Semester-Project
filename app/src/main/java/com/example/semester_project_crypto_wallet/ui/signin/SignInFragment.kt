@@ -67,14 +67,14 @@ class SignInFragment : Fragment() {
 //                    Toast.LENGTH_SHORT
 //                ).show()
 
-            if(!signInViewModel.checkPublicKey() || !signInViewModel.checkPrivateKey() || !signInViewModel.checkPinKey()){
-                Toast.makeText(context, "Chybaju udaje", Toast.LENGTH_LONG).show()
-            }else if(!signInViewModel.validatePublicKey()){
-                Toast.makeText(context, "Chybny public key", Toast.LENGTH_LONG).show()
-                // TODO: validate private key
-                // KeyPair.canSign() -> Returns true if this Keypair is capable of signing
-            }else if(!signInViewModel.validatePinKey()){
+            if(!signInViewModel.checkPrivateKey() || !signInViewModel.checkPinKey()){
+                Toast.makeText(context, "Chybaju udaje na prihlasenie", Toast.LENGTH_LONG).show()
+            }else if(!signInViewModel.validatePinKey()) {
                 Toast.makeText(context, "Kratky pin", Toast.LENGTH_LONG).show()
+
+            }else if(!signInViewModel.validatePublicKeyFromPrivateKey()){
+                Toast.makeText(context, "Chybny private key alebo pin", Toast.LENGTH_LONG).show()
+
             }else{
                 signInViewModel.insertUserToDb()
                 findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
