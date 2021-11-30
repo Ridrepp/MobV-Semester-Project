@@ -15,6 +15,7 @@ class User() {
     lateinit var my_keypair: KeyPair
 
 
+
     fun generateKeys(){
         my_keypair = KeyPair.random()
         Log.i("KEYPAIR:", my_keypair.toString())

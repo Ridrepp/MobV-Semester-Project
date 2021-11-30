@@ -31,6 +31,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="22sp"
+        android:textIsSelectable="true"
         app:layout_constraintStart_toStartOf="@+id/contactNameText"
         app:layout_constraintTop_toBottomOf="@+id/contactNameText" />
 
@@ -58,6 +59,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="22sp"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/publicKeyText"
         app:layout_constraintTop_toBottomOf="@+id/publicKeyText" />
