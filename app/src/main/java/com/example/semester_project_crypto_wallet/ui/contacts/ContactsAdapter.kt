@@ -45,12 +45,12 @@ class ContactsAdapter(private val contactsList: ArrayList<Contacts>):
 
             init{
                 val contactDeleteImg : ImageView = itemView.findViewById(R.id.contactDeleteImage)
-                contactDeleteImg.setOnClickListener(View.OnClickListener {
-                    val position = adapterPosition
+                contactDeleteImg.setOnClickListener {
+                    val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         listener.onDeleteClick(position)
                     }
-                })
+                }
             }
         }
     }
