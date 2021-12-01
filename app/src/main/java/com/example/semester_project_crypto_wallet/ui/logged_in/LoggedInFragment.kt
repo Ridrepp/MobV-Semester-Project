@@ -38,7 +38,6 @@ class LoggedInFragment : Fragment() {
         binding.loggedInModel = loggedInViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        //TODO: resolve observer updating balance in loop (skipping ~35 frames on every iteration)
         loggedInViewModel.publicKey.observe(viewLifecycleOwner, {
             if (it == null)
                 return@observe
@@ -46,6 +45,7 @@ class LoggedInFragment : Fragment() {
             loggedInViewModel.balance.observe(viewLifecycleOwner, {
                 binding.balanceTextView.text = getString(R.string.xlm,it.toString())
             })
+            binding.logInPublicKey.text = it
         })
 
         loggedInViewModel.countCredentials.observe(
@@ -57,7 +57,6 @@ class LoggedInFragment : Fragment() {
                 }
             }
         )
-
         return binding.root
     }
 

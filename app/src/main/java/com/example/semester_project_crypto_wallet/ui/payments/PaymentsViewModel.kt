@@ -30,7 +30,7 @@ class PaymentsViewModel(
     val pin: MutableLiveData<String> = MutableLiveData()
 
     fun validatePin(): Boolean{
-        Log.i("mobv", "PaymentsViewModel: validatePin(): " + pin.value?.length)
+        Log.i("PaymentViewModelPin", "PaymentsViewModel: validatePin(): " + pin.value?.length)
         if (pin.value?.length == 4){
             return true
         }

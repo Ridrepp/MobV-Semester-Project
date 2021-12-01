@@ -4,7 +4,15 @@ Vytvorte Android aplikáciu v jazyku Kotlin, v ktorej si budeme môcť vygenerov
 
 ## Funkcionalita:
 
-* Bude sa priebežne aktualizovať.
+* Vygenerovanie a naplnenie účtu na testnete Stellar (Horizon).
+* Pridanie existujúceho účtu na testnete Stellar (Horizon).
+* Odoslanie transakcie na testnete Stellar (Horizon).
+* Načítanie a uloženie aktuálneho zostatku na účte do lokálnej databázy.
+* Načítanie a synchronizácia transakcií (kreditových, debetných) do lokálnej databázy.
+* Zobrazenie transakcií a zostatku z lokálnej databázy.
+* Uloženie do lokálnej databázy kontakty na prijímateľov.
+* Zobrazenie uložených kontaktov, možnosť výberu prijímateľa pri odosielaní transakcie.
+* Používateľské rozhranie na úrovni s intuitívnym ovládaním.
 
 ## Vývojársky tím:
 

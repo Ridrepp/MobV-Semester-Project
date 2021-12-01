@@ -28,4 +28,5 @@
     <string name="contacts">Contacts</string>
     <string name="logOut">Log out</string>
     <string name="name">Name:</string>
+    <string name="yourPublicKey">My Public Key:</string>
 </resources>

@@ -60,6 +60,7 @@
         android:textSize="22sp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
+        android:textIsSelectable="true"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textViewS"
         app:layout_constraintTop_toBottomOf="@+id/textViewS" />
@@ -72,6 +73,7 @@
         android:textSize="22sp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
+        android:textIsSelectable="true"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/textViewD"
         app:layout_constraintTop_toBottomOf="@+id/textViewD" />

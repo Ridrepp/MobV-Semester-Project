@@ -13,7 +13,7 @@ class LoggedInViewModel(
     private val repository: Repository
 ) : ViewModel()
 {
-    val api: WebApi = WebApi()
+    private val api: WebApi = WebApi()
 
     val balance:LiveData<Float>
         get() = repository.getBalance()
@@ -45,7 +45,8 @@ class LoggedInViewModel(
                 val balance: Float = api.getXLMBalance(publicKey)
                 repository.updateBalance(balance, publicKey)
 
-            }catch (e: Exception){
+            }
+            catch (e: Exception){
                 Log.i("insertBalanceToDBError:", e.toString())
             }
         }

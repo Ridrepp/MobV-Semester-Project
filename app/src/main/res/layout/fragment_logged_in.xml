@@ -15,30 +15,59 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stellar_logo"
             android:contentDescription="@string/logoStellarWallet"
-            app:layout_constraintBottom_toTopOf="@+id/balanceTextView">
-        </ImageView>
+            android:src="@drawable/stellar_logo"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/balanceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="20dp"
             android:paddingStart="0dp"
             android:paddingEnd="10dp"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="23sp"
             app:layout_constraintBottom_toTopOf="@+id/transactionsButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/publicKeyDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/yourPublicKey"
+            android:textAlignment="center"
+            android:textColor="@color/logoGreen"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/balanceTextView" />
+
+        <TextView
+            android:id="@+id/logInPublicKey"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/publicKey"
+            android:ems="18"
+            android:paddingStart="0dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/publicKeyDesc" />
 
         <Button
             android:id="@+id/transactionsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             android:text="@string/transactionsButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

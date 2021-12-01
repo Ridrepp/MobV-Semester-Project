@@ -13,19 +13,19 @@ import java.util.*
 class WebApi() {
 
     fun generateKeys():KeyPair{
-        val my_keypair = KeyPair.random()
+        val myKeypair = KeyPair.random()
 
-        Log.i("KEYPAIR:", my_keypair.toString())
-        Log.i("PUBLIC KEY:", my_keypair.accountId)
-        Log.i("PRIVATE KEY:", String(my_keypair.secretSeed))
+        Log.i("KEYPAIR:", myKeypair.toString())
+        Log.i("PUBLIC KEY:", myKeypair.accountId)
+        Log.i("PRIVATE KEY:", String(myKeypair.secretSeed))
 
-        return my_keypair
+        return myKeypair
     }
 
-    fun createAccount(my_keypair : KeyPair) {
+    fun createAccount(myKeypair : KeyPair) {
         val friendBotUrl = String.format(
             "https://friendbot.stellar.org/?addr=%s",
-            my_keypair.accountId
+            myKeypair.accountId
         )
         val response: InputStream = URL(friendBotUrl).openStream()
         Log.i("SUC", response.toString())
@@ -40,12 +40,12 @@ class WebApi() {
         return account.balances[0].balance.toFloat()
     }
 
-    fun sendPayment(destination: KeyPair, my_keypair : KeyPair, amount: String) {
+    fun sendPayment(destination: KeyPair, myKeypair : KeyPair, amount: String) {
         val server = Server("https://horizon-testnet.stellar.org")
 
         server.accounts().account(destination.accountId)
 
-        val sourceAccount: AccountResponse = server.accounts().account(my_keypair.accountId)
+        val sourceAccount: AccountResponse = server.accounts().account(myKeypair.accountId)
 
         val transaction: Transaction? = Transaction.Builder(sourceAccount, Network.TESTNET).addOperation(
             PaymentOperation.Builder(
@@ -59,7 +59,7 @@ class WebApi() {
             .setBaseFee(Transaction.MIN_BASE_FEE)
             .build()
 
-        transaction?.sign(my_keypair)
+        transaction?.sign(myKeypair)
 
         try {
             val response: SubmitTransactionResponse = server.submitTransaction(transaction)
