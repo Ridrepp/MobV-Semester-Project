@@ -40,15 +40,17 @@ class PaymentsViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     fun sendPayment(sourcePrivateKey: String, destinationPublicKey: String, balance: Float):Int {
         try {
-            Log.i("mobv", "PaymentsViewModel: sendPayment()")
-
             val pin = pin.value.toString()
+            val amountText = amount.value
             val amount = amount.value.toString()
             val myKeypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
             val destinationKeypair = KeyPair.fromAccountId(destinationPublicKey)
 
-            if(amount.toFloat() > balance){
+            if(amountText == null){
                 return 1
+            }
+            if(amount.toFloat() > balance){
+                return 2
             }
             api.sendPayment(destinationKeypair, myKeypair, amount)
 

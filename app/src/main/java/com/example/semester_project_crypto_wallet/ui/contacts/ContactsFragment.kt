@@ -72,9 +72,9 @@ class ContactsFragment : Fragment(){
             lifecycleScope.launch {
                 when(contactsViewModel.insertContactToDatabase()){
                     0 -> { binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in) }
-                    1 -> { Toast.makeText(context, "Contact name and public key can not be empty.", Toast.LENGTH_LONG).show() }
-                    2 -> { Toast.makeText(context, "Public key can not be empty.", Toast.LENGTH_LONG).show() }
-                    3 -> { Toast.makeText(context, "Contact name can not be empty.", Toast.LENGTH_LONG).show() }
+                    1 -> { Toast.makeText(context, "Contact name and public key can not be empty.", Toast.LENGTH_SHORT).show() }
+                    2 -> { Toast.makeText(context, "Public key can not be empty.", Toast.LENGTH_SHORT).show() }
+                    3 -> { Toast.makeText(context, "Contact name can not be empty.", Toast.LENGTH_SHORT).show() }
                 }
             }
         }

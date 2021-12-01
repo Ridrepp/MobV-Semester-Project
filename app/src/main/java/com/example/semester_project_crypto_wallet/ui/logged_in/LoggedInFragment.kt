@@ -1,14 +1,10 @@
 package com.example.semester_project_crypto_wallet.ui.logged_in
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentLoggedInBinding
-import com.example.semester_project_crypto_wallet.ui.MainActivity
 import kotlinx.coroutines.launch
 
 class LoggedInFragment : Fragment() {
@@ -57,7 +52,7 @@ class LoggedInFragment : Fragment() {
             viewLifecycleOwner,
             {
                 if (it == 0) {
-                    Toast.makeText(context, "Missing wallet!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Missing wallet!", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
                 }
             }
@@ -83,7 +78,7 @@ class LoggedInFragment : Fragment() {
                 loggedInViewModel.deleteWallet()
                 loggedInViewModel.deleteTransactions()
             }
-            Toast.makeText(context, "Your wallet was deleted", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Your wallet was deleted", Toast.LENGTH_SHORT).show()
 
             it.findNavController().navigate(R.id.action_loggedInFragment_to_homeFragment)
         }

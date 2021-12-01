@@ -43,15 +43,20 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInButton.setOnClickListener {
-            if(!signInViewModel.checkPrivateKey() || !signInViewModel.checkPinKey()){
-                Toast.makeText(context, "Sign in data not filled", Toast.LENGTH_LONG).show()
-            }else if(!signInViewModel.validatePinKey()) {
-                Toast.makeText(context, "Pin must be 4 digits long", Toast.LENGTH_LONG).show()
+            if(!signInViewModel.checkPrivateKey()){
+                Toast.makeText(context, "Private key must not be empty.", Toast.LENGTH_SHORT).show()
+            }
+            else if (!signInViewModel.checkPinKey()){
+                Toast.makeText(context, "Pin must not be empty.", Toast.LENGTH_SHORT).show()
+            }
+            else if(!signInViewModel.validatePinKey()) {
+                Toast.makeText(context, "Pin must be 4 digits long.", Toast.LENGTH_SHORT).show()
+            }
+            else if(!signInViewModel.validatePublicKeyFromPrivateKey()){
+                Toast.makeText(context, "Private key is incorrect.", Toast.LENGTH_SHORT).show()
 
-            }else if(!signInViewModel.validatePublicKeyFromPrivateKey()){
-                Toast.makeText(context, "Private key or pin are incorrect", Toast.LENGTH_LONG).show()
-
-            }else{
+            }
+            else{
                 signInViewModel.insertUserToDb()
                 findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
             }

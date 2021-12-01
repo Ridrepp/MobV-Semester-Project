@@ -29,17 +29,16 @@ class SignInViewModel(private val repository: Repository) : ViewModel() {
     fun validatePublicKeyFromPrivateKey() : Boolean {
         val server = Server("https://horizon-testnet.stellar.org")
 
-        try {
+        return try {
             val myKeypair = KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString())
 
             server.accounts().account(myKeypair.accountId.toString())
-
+            KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString()).canSign()
 
         }catch (e: Exception){
-            Log.i("validatePKfromPK()", e.toString())
+            Log.i("validatePKFromPKErr", e.toString())
+            false
         }
-
-        return KeyPair.fromSecretSeed(privateKeyStrEditText.value.toString()).canSign()
     }
 
     fun validatePinKey() : Boolean{

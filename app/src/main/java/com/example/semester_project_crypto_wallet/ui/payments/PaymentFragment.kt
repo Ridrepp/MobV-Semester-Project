@@ -52,17 +52,23 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                                         when (paymentsViewModel.sendPayment(it.privateKey,
                                             receiverPublicKey, it.balance)){
                                             0 -> {
-                                                Log.i("mobv", "PaymentFragment: Payment done")
+                                                Log.i("PaymentFragDone", "PaymentFragment: Payment done")
                                                 Toast.makeText(context,"Payment was successful.",
-                                                    Toast.LENGTH_SHORT).show()
+                                                    Toast.LENGTH_LONG).show()
                                                 findNavController().navigate(R.id.action_paymentFragment_to_loggedInFragment)
                                             }
                                             1 ->{
-                                                Log.i("mobv", "PaymentFragment: Not enough balance")
+                                                Log.i("PaymentFragAmount", "PaymentFragment: Empty value of amount")
+                                                Toast.makeText(context,"Amount not specified.",
+                                                    Toast.LENGTH_SHORT).show()
+                                            }
+                                            2 ->{
+                                                Log.i("PaymentFragBalance", "PaymentFragment: Not enough balance")
                                                 Toast.makeText(context,"Not enough balance.",
                                                     Toast.LENGTH_SHORT).show()
                                             }
                                             else -> {
+                                                Log.i("PaymentFragFailed", "PaymentFragment: Payment failed")
                                                 Toast.makeText(context, "Payment failed.",
                                                     Toast.LENGTH_SHORT).show()
                                             }
@@ -74,10 +80,10 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                     })
                 }
                 else{
-                    Log.i("mobv", "PaymentFragment: PIN bad")
+                    Log.i("PaymentFragPINBad", "PaymentFragment: PIN bad")
                     Toast.makeText(
                         context,
-                        "Nebol zadaný PIN.",
+                        "Pin must be 4 digits long.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
