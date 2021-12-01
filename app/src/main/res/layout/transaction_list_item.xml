@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="22sp"
-        android:text="@string/payment_idTV"
+        android:text="@string/paymentIDTV"
         android:textColor="@color/logoGreen"
         app:layout_constraintStart_toStartOf="@+id/textViewS"
         app:layout_constraintTop_toBottomOf="@+id/textView_amount" />

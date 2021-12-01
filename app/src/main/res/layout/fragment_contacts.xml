@@ -7,8 +7,6 @@
             name="contactsModel"
             type="com.example.semester_project_crypto_wallet.ui.contacts.ContactsViewModel" />
     </data>
-<!--    TODO(delete contact button)-->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingTop="10dp"
-            android:text="@string/contactsButton"
+            android:text="@string/contacts"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"

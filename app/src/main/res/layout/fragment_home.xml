@@ -14,7 +14,7 @@
             android:layout_width="408dp"
             android:layout_height="212dp"
             android:layout_marginTop="75dp"
-            android:contentDescription="@string/logo_stellar_wallet"
+            android:contentDescription="@string/logoStellarWallet"
             android:src="@drawable/stellar_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"

@@ -32,6 +32,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textIsSelectable="true"
+        android:contentDescription="@string/contactName"
         app:layout_constraintStart_toStartOf="@+id/contactNameText"
         app:layout_constraintTop_toBottomOf="@+id/contactNameText" />
 
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="start"
-        android:text="@string/public_key"
+        android:text="@string/publicKeyTV"
         android:textAlignment="textStart"
         android:textColor="@color/logoGreen"
         android:textSize="22sp"
@@ -60,6 +61,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textIsSelectable="true"
+        android:contentDescription="@string/publicKey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/publicKeyText"
         app:layout_constraintTop_toBottomOf="@+id/publicKeyText" />

@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="@string/numeric_password"
+            android:hint="@string/numericPassword"
             android:importantForAutofill="no"
             android:inputType="numberPassword"
             android:maxLength="4"
