@@ -44,7 +44,6 @@ class TxFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         txViewModel.publicKey.observe(viewLifecycleOwner,{publicKeyToServer->
             txViewModel.addPaymentsToDB(publicKeyToServer)
-
         })
         txViewModel.transactions.observe(viewLifecycleOwner, { transactionList ->
             val transactionSource = arrayListOf<String>()
@@ -64,7 +63,7 @@ class TxFragment : Fragment() {
             newRecyclerView.layoutManager = LinearLayoutManager(this.context)
             newRecyclerView.setHasFixedSize(true)
 
-            newArrayList = arrayListOf<Tx>()
+            newArrayList = arrayListOf()
             for (i in transactionSource.indices){
                 val tx = Tx(transactionSource[i], transactionDestination[i], transactionAmount[i], transactionID[i])
                 newArrayList.add(tx)
@@ -73,6 +72,5 @@ class TxFragment : Fragment() {
         })
 
         return binding.root
-
     }
 }

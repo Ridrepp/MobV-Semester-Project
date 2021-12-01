@@ -10,56 +10,34 @@ import java.io.InputStream
 import java.net.URL
 import java.util.*
 
-
-
-
-
 class WebApi() {
 
     fun generateKeys():KeyPair{
-        var my_keypair = KeyPair.random()
+        val my_keypair = KeyPair.random()
 
         Log.i("KEYPAIR:", my_keypair.toString())
         Log.i("PUBLIC KEY:", my_keypair.accountId)
-        Log.i("PRIVATE KEY:", String(my_keypair.getSecretSeed()))
+        Log.i("PRIVATE KEY:", String(my_keypair.secretSeed))
 
         return my_keypair
     }
 
     fun createAccount(my_keypair : KeyPair) {
-        val friendbotUrl = String.format(
+        val friendBotUrl = String.format(
             "https://friendbot.stellar.org/?addr=%s",
             my_keypair.accountId
         )
-        val response: InputStream = URL(friendbotUrl).openStream()
+        val response: InputStream = URL(friendBotUrl).openStream()
         Log.i("SUC", response.toString())
 
         val body: String = Scanner(response, "UTF-8").useDelimiter("\\A").next()
         Log.i("SUC", body)
     }
 
-    fun getXLMbalance(publicKey: String): Float {
+    fun getXLMBalance(publicKey: String): Float {
         val server = Server("https://horizon-testnet.stellar.org")
         val account = server.accounts().account(publicKey)
         return account.balances[0].balance.toFloat()
-    }
-
-    fun checkBalances(my_keypair : KeyPair) {
-
-        val server = Server("https://horizon-testnet.stellar.org")
-        val account = server.accounts().account(my_keypair.accountId)
-
-        Log.i("WAR", "Balances for account" + my_keypair.accountId)
-        Log.i("Number of balances:", account.balances.size.toString())
-
-        for (balance in account.balances) {
-            Log.i("BALANCE", balance.balance)
-            Log.i("ASSETCODE", balance.assetCode.toString())
-            Log.i("ASSETTYPE", balance.assetType)
-        }
-
-        Log.i("BALANCE", account.balances[0].balance)
-        Log.i("BALANCE-TYPE", account.balances[0].balance::class.simpleName.toString())
     }
 
     fun sendPayment(destination: KeyPair, my_keypair : KeyPair, amount: String) {
@@ -67,7 +45,7 @@ class WebApi() {
 
         server.accounts().account(destination.accountId)
 
-        val sourceAccount: AccountResponse = server.accounts().account(my_keypair.getAccountId())
+        val sourceAccount: AccountResponse = server.accounts().account(my_keypair.accountId)
 
         val transaction: Transaction? = Transaction.Builder(sourceAccount, Network.TESTNET).addOperation(
             PaymentOperation.Builder(
@@ -81,9 +59,7 @@ class WebApi() {
             .setBaseFee(Transaction.MIN_BASE_FEE)
             .build()
 
-        if (transaction != null) {
-            transaction.sign(my_keypair)
-        }
+        transaction?.sign(my_keypair)
 
         try {
             val response: SubmitTransactionResponse = server.submitTransaction(transaction)
@@ -96,8 +72,7 @@ class WebApi() {
 
     fun getTransactionsFromServer(publicKey: String): Page<OperationResponse>? {
         val server = Server("https://horizon-testnet.stellar.org")
-        val responseFromServer = server.payments().limit(1000).forAccount(publicKey).execute()
 
-        return responseFromServer
+        return server.payments().limit(200).forAccount(publicKey).execute()
     }
 }

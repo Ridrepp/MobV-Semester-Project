@@ -2,7 +2,6 @@ package com.example.semester_project_crypto_wallet.ui.register
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +43,6 @@ class RegisterFragment : Fragment() {
         binding.registerModel = registerViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // GENERATE BUTTON LISTENER
         binding.generateKeys.setOnClickListener {
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
@@ -66,14 +64,11 @@ class RegisterFragment : Fragment() {
         binding.confirmRegister.setOnClickListener {
             lifecycleScope.launch {
 
-                Log.i("mobv", "RegisterFragment: pressed confirmRegister")
                 if (registerViewModel.validatePin()) {
-                    Log.i("mobv", "RegisterFragment: PIN ok")
                     registerViewModel.insertUserToDb()
-                    Log.i("mobv", "RegisterFragment: wallet created and user inserted")
                     it.findNavController().navigate(R.id.action_registerFragment_to_loggedInFragment)
-                }else{
-                    Log.i("mobv", "RegisterFragment: PIN bad")
+                }
+                else{
                     Toast.makeText(
                         context,
                         "Pin must be 4 digits long.",

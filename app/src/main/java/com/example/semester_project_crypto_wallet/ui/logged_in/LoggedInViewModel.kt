@@ -42,7 +42,7 @@ class LoggedInViewModel(
     fun insertBalanceToDb(publicKey: String){
         viewModelScope.launch {
             try {
-                val balance: Float = api.getXLMbalance(publicKey)
+                val balance: Float = api.getXLMBalance(publicKey)
                 Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: balance: $balance")
 
                 repository.updateBalance(balance, publicKey)

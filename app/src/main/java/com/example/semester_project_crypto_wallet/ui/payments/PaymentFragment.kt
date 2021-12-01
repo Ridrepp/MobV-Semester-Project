@@ -42,29 +42,29 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
             lifecycleScope.launch {
                 if(paymentsViewModel.validatePin()){
                     val selectedReceiverName = binding.contactsDropdown.selectedItem.toString()
-//                    Log.i("mobv", "PaymentFragment: selectedReceiverName: $selectedReceiverName")
                     paymentsViewModel.receivers.observe(viewLifecycleOwner, { receiverName ->
                         receiverName.forEach{ it ->
-//                            Log.i("mobv", "PaymentFragment: it.Name:" + it.Name)
                             if(it.Name == selectedReceiverName){
                                 val receiverPublicKey = it.Address
-//                                Log.i("mobv", "PaymentFragment: it.Address:" + it.Address)
-//                                Log.i("mobv", "PaymentFragment: receiverPublicKey: $receiverPublicKey")
                                 paymentsViewModel.wallet.observe(
                                     viewLifecycleOwner,
                                     {
-                                        when (paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey, it.balance)){
+                                        when (paymentsViewModel.sendPayment(it.privateKey,
+                                            receiverPublicKey, it.balance)){
                                             0 -> {
                                                 Log.i("mobv", "PaymentFragment: Payment done")
-                                                Toast.makeText(context,"Payment was successful.", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context,"Payment was successful.",
+                                                    Toast.LENGTH_SHORT).show()
                                                 findNavController().navigate(R.id.action_paymentFragment_to_loggedInFragment)
                                             }
                                             1 ->{
                                                 Log.i("mobv", "PaymentFragment: Not enough balance")
-                                                Toast.makeText(context,"Not enough balance.", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context,"Not enough balance.",
+                                                    Toast.LENGTH_SHORT).show()
                                             }
                                             else -> {
-                                                Toast.makeText(context, "Payment failed.", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context, "Payment failed.",
+                                                    Toast.LENGTH_SHORT).show()
                                             }
                                         }
                                     }
@@ -72,7 +72,8 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                             }
                         }
                     })
-                }else{
+                }
+                else{
                     Log.i("mobv", "PaymentFragment: PIN bad")
                     Toast.makeText(
                         context,
@@ -83,9 +84,9 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
             }
         }
         binding.contactsDropdown.onItemSelectedListener = this
-
         return binding.root
     }
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val contacts: MutableList<String> = ArrayList()
@@ -93,13 +94,11 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         val dataAdapter: ArrayAdapter<String> =
             ArrayAdapter<String>(this.requireContext(), R.layout.spinner_color_layout, contacts)
 
-
         dataAdapter.setDropDownViewResource(R.layout.spinner_color_layout)
         paymentsViewModel.receivers.observe(viewLifecycleOwner, { receiverName ->
             receiverName.forEach{
                 dataAdapter.add(it.Name)
             }
-
         })
         binding.contactsDropdown.adapter = dataAdapter
     }
@@ -108,6 +107,5 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
-        return
     }
 }

@@ -47,7 +47,6 @@ class LoggedInFragment : Fragment() {
         loggedInViewModel.publicKey.observe(viewLifecycleOwner, {
             if (it == null)
                 return@observe
-//            Log.i("mobv", "LoggedInFragment: onCreateView: publicKey: $it")
             loggedInViewModel.insertBalanceToDb(it)
             loggedInViewModel.balance.observe(viewLifecycleOwner, {
                 binding.balanceTextView.text = getString(R.string.xlm,it.toString())

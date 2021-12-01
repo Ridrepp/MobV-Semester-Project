@@ -47,7 +47,7 @@ class ContactsFragment : Fragment(){
             newRecyclerView.layoutManager = LinearLayoutManager(this.context)
             newRecyclerView.setHasFixedSize(true)
 
-            newArrayList = arrayListOf<Contacts>()
+            newArrayList = arrayListOf()
             for (i in contactsName.indices){
                 val contacts = Contacts(contactsName[i], contactsPK[i])
                 newArrayList.add(contacts)
