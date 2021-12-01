@@ -1,10 +1,8 @@
 package com.example.semester_project_crypto_wallet.ui
 
-import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import java.io.UnsupportedEncodingException
-import java.lang.Exception
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.*
@@ -18,8 +16,7 @@ object AES {
 
     private lateinit var key: ByteArray
 
-
-    fun setKey(myKey: String) {
+    private fun setKey(myKey: String) {
         var sha: MessageDigest? = null
         try {
             key = myKey.toByteArray(charset("UTF-8"))
@@ -33,7 +30,6 @@ object AES {
             e.printStackTrace()
         }
     }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun encrypt(strToEncrypt: String, secret: String): String? {

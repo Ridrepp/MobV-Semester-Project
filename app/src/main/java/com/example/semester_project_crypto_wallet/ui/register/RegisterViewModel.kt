@@ -46,9 +46,8 @@ class RegisterViewModel(
 
             try {
                 repository.insertWallet(Wallet(myKeypair.accountId,encryptedSecretKey,0.toFloat()))
-                Log.i("***", "*****REGISTRATION SUCCESSFUL******")
             } catch (e: Exception) {
-                Log.i("EXCEPTION", e.toString())
+                Log.i("insertUserToDBregErr", e.toString())
             }
         }
     }

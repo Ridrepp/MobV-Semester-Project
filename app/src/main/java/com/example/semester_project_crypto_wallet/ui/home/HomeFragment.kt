@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -25,7 +23,6 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false
         )
-        binding.homeModel = homeViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -35,6 +32,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.registerButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_registerFragment)}
-        binding.signinButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_signInFragment)}
+        binding.signInButton.setOnClickListener {it.findNavController().navigate(R.id.action_homeFragment_to_signInFragment)}
     }
 }

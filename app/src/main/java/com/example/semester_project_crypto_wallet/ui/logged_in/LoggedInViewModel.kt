@@ -43,14 +43,10 @@ class LoggedInViewModel(
         viewModelScope.launch {
             try {
                 val balance: Float = api.getXLMBalance(publicKey)
-                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: balance: $balance")
-
                 repository.updateBalance(balance, publicKey)
 
-                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: BALANCE SAVED SUCCESSFULLY")
             }catch (e: Exception){
-                Log.i("mobv", "LoggedInViewModel: insertBalanceToDb: failed")
-                Log.i("EXCEPTION", e.toString())
+                Log.i("insertBalanceToDBError:", e.toString())
             }
         }
     }

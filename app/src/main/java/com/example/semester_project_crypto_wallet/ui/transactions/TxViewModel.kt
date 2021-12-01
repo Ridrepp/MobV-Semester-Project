@@ -2,7 +2,6 @@ package com.example.semester_project_crypto_wallet.ui.transactions
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.semester_project_crypto_wallet.data.Repository
@@ -15,8 +14,7 @@ class TxViewModel (
     private val repository: Repository
     ) : ViewModel()
 {
-
-    val api: WebApi = WebApi()
+    private val api: WebApi = WebApi()
 
     val transactions: LiveData<List<Transaction>>
         get() = repository.getTransactions()
@@ -27,7 +25,6 @@ class TxViewModel (
     fun addPaymentsToDB(publicKey: String){
         viewModelScope.launch {
             try {
-                Log.i("TxViewModel", "correct")
                 val response = api.getTransactionsFromServer(publicKey)
 
                 if (response != null) {
@@ -39,8 +36,7 @@ class TxViewModel (
                 }
             }
             catch (e: Exception){
-                Log.i("TxViewModel", "something went wrong")
-                Log.i("EXCEPTION", e.toString())
+                Log.i("addPaymentsToDBError", e.toString())
             }
         }
     }

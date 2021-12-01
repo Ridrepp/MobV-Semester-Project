@@ -55,7 +55,7 @@ class PaymentsViewModel(
             return 0
         }
         catch (e: Exception){
-            Log.i("sendPaymentErr", e.toString())
+            Log.i("sendPaymentError:", e.toString())
             return -1
         }
     }

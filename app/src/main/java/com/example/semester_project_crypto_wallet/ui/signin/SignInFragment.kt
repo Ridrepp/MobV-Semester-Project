@@ -43,26 +43,6 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInButton.setOnClickListener {
-//            if (signInViewModel.logInAccount()) {
-//                signInViewModel.findKeyCredential.observe(
-//                    viewLifecycleOwner,
-//                    {
-//                        if (it == null){
-//                            Toast.makeText(context, "Konto so zadaným public key nebolo nájdené.", Toast.LENGTH_LONG).show()
-//                        }
-//                        else {
-//                            Log.i("FOUNDED PUBLIC", it.publicKey)
-//                            Log.i("FOUNDED PRIVATE", it.privateKey)
-//
-//                            findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
-//                        }
-//                    })
-//            } else
-//                Toast.makeText(
-//                    context, "Nebol zadaný public key.",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-
             if(!signInViewModel.checkPrivateKey() || !signInViewModel.checkPinKey()){
                 Toast.makeText(context, "Sign in data not filled", Toast.LENGTH_LONG).show()
             }else if(!signInViewModel.validatePinKey()) {
@@ -75,7 +55,6 @@ class SignInFragment : Fragment() {
                 signInViewModel.insertUserToDb()
                 findNavController().navigate(R.id.action_signInFragment_to_loggedInFragment)
             }
-
         }
     }
 }

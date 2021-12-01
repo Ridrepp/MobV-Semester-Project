@@ -25,17 +25,6 @@ class MainActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
-
-        // TESTING AREA
-
-//        val user = User()
-//        user.generateKeys()
-//        user.createAccount()
-//        user.checkBalances()
-
-        // TESTING AREA
-
-
         NavigationUI.setupWithNavController(
             nav_view, Navigation.findNavController(
                 this, R.id.nav_host_fragment

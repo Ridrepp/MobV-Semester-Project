@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.semester_project_crypto_wallet.R
 
-
 class TxAdapter(private val transactionList: ArrayList<Tx>):
         RecyclerView.Adapter<TxAdapter.MyViewHolder>(){
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
