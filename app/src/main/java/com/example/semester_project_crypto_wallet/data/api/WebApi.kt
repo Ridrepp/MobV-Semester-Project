@@ -1,18 +1,12 @@
 package com.example.semester_project_crypto_wallet.data.api
 
 import android.util.Log
-import org.json.JSONObject
 import org.stellar.sdk.*
 import org.stellar.sdk.responses.AccountResponse
 import org.stellar.sdk.responses.Page
 import org.stellar.sdk.responses.SubmitTransactionResponse
 import org.stellar.sdk.responses.operations.OperationResponse
-import org.stellar.sdk.responses.operations.PaymentOperationResponse
-import org.stellar.sdk.xdr.PaymentResult
-import java.io.BufferedReader
 import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
 
@@ -102,18 +96,8 @@ class WebApi() {
 
     fun getTransactionsFromServer(publicKey: String): Page<OperationResponse>? {
         val server = Server("https://horizon-testnet.stellar.org")
-        val responseFromServer = server.payments().forAccount(publicKey).execute()
+        val responseFromServer = server.payments().limit(1000).forAccount(publicKey).execute()
 
         return responseFromServer
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -38,15 +38,21 @@ class PaymentsViewModel(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String, destinationPublicKey: String):Boolean {
+    fun sendPayment(sourcePublicKey: String, sourcePrivateKey: String, destinationPublicKey: String, balance: Float):Int {
         try {
-
-        Log.i("mobv", "PaymentsViewModel: sendPayment()")
+            Log.i("mobv", "PaymentsViewModel: sendPayment()")
 
             val pin = pin.value.toString()
             val amount = amount.value.toString()
             val my_keypair = KeyPair.fromSecretSeed(AES.decrypt(sourcePrivateKey, pin))
             val destination_keypair = KeyPair.fromAccountId(destinationPublicKey)
+
+//            Log.i("pTests", "balance = "+balance.split(" ").toTypedArray()[1].toFloat())
+//            Log.i("pTests", "amount = ${amount.toFloat()}")
+
+            if(amount.toFloat() > balance){
+                return 1
+            }
 
     //        Log.i("mobv", sourcePublicKey)
     //        Log.i("mobv", sourcePrivateKey)
@@ -60,11 +66,11 @@ class PaymentsViewModel(
     //        Log.i("mobv", destination_keypair.canSign().toString())
             api.sendPayment(destination_keypair, my_keypair, amount)
 
-            return true
+            return 0
         }
         catch (e: Exception){
             Log.i("sendPaymentErr", e.toString())
-            return false
+            return -1
         }
     }
 

@@ -44,7 +44,7 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                     val selectedReceiverName = binding.contactsDropdown.selectedItem.toString()
 //                    Log.i("mobv", "PaymentFragment: selectedReceiverName: $selectedReceiverName")
                     paymentsViewModel.receivers.observe(viewLifecycleOwner, { receiverName ->
-                        receiverName.forEach{
+                        receiverName.forEach{ it ->
 //                            Log.i("mobv", "PaymentFragment: it.Name:" + it.Name)
                             if(it.Name == selectedReceiverName){
                                 val receiverPublicKey = it.Address
@@ -53,14 +53,19 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                                 paymentsViewModel.wallet.observe(
                                     viewLifecycleOwner,
                                     {
-                                        if (!paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey)){
-                                            Toast.makeText(context, "Payment failed.", Toast.LENGTH_SHORT).show()
-                                        }
-                                        else{
-                                            Log.i("mobv", "PaymentFragment: Payment done")
-                                            Toast.makeText(context,"Payment was successful.", Toast.LENGTH_SHORT).show()
-                                            findNavController().navigate(R.id.action_paymentFragment_to_loggedInFragment)
-
+                                        when (paymentsViewModel.sendPayment(it.publicKey, it.privateKey, receiverPublicKey, it.balance)){
+                                            0 -> {
+                                                Log.i("mobv", "PaymentFragment: Payment done")
+                                                Toast.makeText(context,"Payment was successful.", Toast.LENGTH_SHORT).show()
+                                                findNavController().navigate(R.id.action_paymentFragment_to_loggedInFragment)
+                                            }
+                                            1 ->{
+                                                Log.i("mobv", "PaymentFragment: Not enough balance")
+                                                Toast.makeText(context,"Not enough balance.", Toast.LENGTH_SHORT).show()
+                                            }
+                                            else -> {
+                                                Toast.makeText(context, "Payment failed.", Toast.LENGTH_SHORT).show()
+                                            }
                                         }
                                     }
                                 )
