@@ -34,7 +34,12 @@
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.semester_project_crypto_wallet.ui.payments.PaymentFragment"
-        android:label="PaymentFragment"/>
+        android:label="PaymentFragment">
+        <action
+            android:id="@+id/action_paymentFragment_to_loggedInFragment"
+            app:destination="@id/loggedInFragment"
+            app:enterAnim="@anim/fade_in"/>
+    </fragment>
 
     <fragment
         android:id="@+id/registerFragment"

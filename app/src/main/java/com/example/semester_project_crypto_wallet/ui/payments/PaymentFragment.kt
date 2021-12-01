@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentPaymentBinding
@@ -34,7 +35,9 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
         )
         binding.paymentsModel = paymentsViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
+        paymentsViewModel.balance.observe(viewLifecycleOwner, {
+            binding.balanceTextView.text = getString(R.string.xlm,it.toString())
+        })
         binding.sendButton.setOnClickListener{
             lifecycleScope.launch {
                 if(paymentsViewModel.validatePin()){
@@ -56,6 +59,8 @@ class PaymentFragment : Fragment(), AdapterView.OnItemSelectedListener{
                                         else{
                                             Log.i("mobv", "PaymentFragment: Payment done")
                                             Toast.makeText(context,"Payment was successful.", Toast.LENGTH_SHORT).show()
+                                            findNavController().navigate(R.id.action_paymentFragment_to_loggedInFragment)
+
                                         }
                                     }
                                 )

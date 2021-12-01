@@ -19,6 +19,9 @@ class PaymentsViewModel(
 
     val api: WebApi = WebApi()
 
+    val balance:LiveData<Float>
+        get() = repository.getBalance()
+
     val wallet: LiveData<Wallet>
         get() = repository.getWallet()
     val receivers: LiveData<List<Receiver>>
