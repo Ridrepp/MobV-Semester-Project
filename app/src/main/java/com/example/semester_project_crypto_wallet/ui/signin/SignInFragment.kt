@@ -2,7 +2,6 @@ package com.example.semester_project_crypto_wallet.ui.signin
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.semester_project_crypto_wallet.R
 import com.example.semester_project_crypto_wallet.data.util.Injection
 import com.example.semester_project_crypto_wallet.databinding.FragmentSigninBinding
-import kotlinx.coroutines.launch
 
 class SignInFragment : Fragment() {
     private lateinit var signInViewModel: SignInViewModel
@@ -68,12 +64,12 @@ class SignInFragment : Fragment() {
 //                ).show()
 
             if(!signInViewModel.checkPrivateKey() || !signInViewModel.checkPinKey()){
-                Toast.makeText(context, "Chybaju udaje na prihlasenie", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Sign in data not filled", Toast.LENGTH_LONG).show()
             }else if(!signInViewModel.validatePinKey()) {
-                Toast.makeText(context, "Kratky pin", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Pin must be 4 digits long", Toast.LENGTH_LONG).show()
 
             }else if(!signInViewModel.validatePublicKeyFromPrivateKey()){
-                Toast.makeText(context, "Chybny private key alebo pin", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Private key or pin are incorrect", Toast.LENGTH_LONG).show()
 
             }else{
                 signInViewModel.insertUserToDb()

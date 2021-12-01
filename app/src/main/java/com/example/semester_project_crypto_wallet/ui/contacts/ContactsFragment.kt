@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -55,7 +56,6 @@ class ContactsFragment : Fragment(){
             cAdapter.setOnItemClickListener(object : ContactsAdapter.OnItemClickListener {
 
                 override fun onDeleteClick(position: Int) {
-//                    Log.i("Daco", " " + contactsName[position])
                     contactsViewModel.deleteContactFromDB(contactsName[position], contactsPK[position])
                     binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
                 }
@@ -70,9 +70,13 @@ class ContactsFragment : Fragment(){
 
         binding.addContactButton.setOnClickListener {
             lifecycleScope.launch {
-                contactsViewModel.insertContactToDatabase()
+                when(contactsViewModel.insertContactToDatabase()){
+                    0 -> { binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in) }
+                    1 -> { Toast.makeText(context, "Contact name and public key can not be empty.", Toast.LENGTH_LONG).show() }
+                    2 -> { Toast.makeText(context, "Public key can not be empty.", Toast.LENGTH_LONG).show() }
+                    3 -> { Toast.makeText(context, "Contact name can not be empty.", Toast.LENGTH_LONG).show() }
+                }
             }
-            binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(this.context, R.anim.fade_in)
         }
     }
 }

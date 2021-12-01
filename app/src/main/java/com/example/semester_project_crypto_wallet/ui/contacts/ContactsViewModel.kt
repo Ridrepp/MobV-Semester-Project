@@ -14,10 +14,20 @@ class ContactsViewModel (private val repository: Repository) : ViewModel(){
     val receivers: LiveData<List<Receiver>>
         get() = repository.getReceivers()
 
-    fun insertContactToDatabase(){
+    fun insertContactToDatabase(): Int{
+        if (publicKeyStr == ""  && contactName == ""){
+            return 1
+        }
+        if (publicKeyStr == ""){
+            return 2
+        }
+        if (contactName == ""){
+            return 3
+        }
         viewModelScope.launch {
             repository.insertReceiver(Receiver(publicKeyStr,contactName))
         }
+        return 0
     }
 
     fun deleteContactFromDB(name: String, address: String){

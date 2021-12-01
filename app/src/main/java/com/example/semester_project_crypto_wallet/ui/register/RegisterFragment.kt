@@ -76,7 +76,7 @@ class RegisterFragment : Fragment() {
                     Log.i("mobv", "RegisterFragment: PIN bad")
                     Toast.makeText(
                         context,
-                        "Nebol zadaný PIN. Nebolo možné zaregistrovať účet.",
+                        "Pin must be 4 digits long.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
