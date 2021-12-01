@@ -38,7 +38,6 @@ class ContactsAdapter(private val contactsList: ArrayList<Contacts>):
             return contactsList.size
         }
 
-
         class MyViewHolder(itemView: View, listener: OnItemClickListener): RecyclerView.ViewHolder(itemView){
             val contactName : TextView = itemView.findViewById(R.id.rvContactName)
             val contactPK : TextView = itemView.findViewById(R.id.rvContactPublicKey)

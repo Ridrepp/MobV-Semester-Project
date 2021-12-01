@@ -41,6 +41,7 @@
             android:layout_marginTop="10dp"
             android:contentDescription="@string/publicKey"
             android:ems="15"
+            android:animateLayoutChanges="true"
             android:text="@{registerModel.publicKeyStr}"
             android:textColor="@color/white"
             android:textIsSelectable="true"
@@ -58,7 +59,7 @@
             android:textColor="@color/white"
             android:textIsSelectable="true"
             app:layout_constraintStart_toStartOf="@+id/publicKeyTextView"
-            app:layout_constraintTop_toBottomOf="@+id/privateKeTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/privateKeyTextView" />
 
         <Button
             android:id="@+id/generateKeys"
@@ -109,19 +110,17 @@
             android:text="@string/publicKeyTV"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
-            android:id="@+id/privateKeTextView"
+            android:id="@+id/privateKeyTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/privateKeyTV"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@+id/publicKeyTextView"
             app:layout_constraintTop_toBottomOf="@+id/publicKeyText" />
 

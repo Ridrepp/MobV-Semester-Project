@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -56,6 +57,7 @@ class ContactsFragment : Fragment(){
                 override fun onDeleteClick(position: Int) {
 //                    Log.i("Daco", " " + contactsName[position])
                     contactsViewModel.deleteContactFromDB(contactsName[position], contactsPK[position])
+                    binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
                 }
             })
             newRecyclerView.adapter = cAdapter
@@ -70,6 +72,7 @@ class ContactsFragment : Fragment(){
             lifecycleScope.launch {
                 contactsViewModel.insertContactToDatabase()
             }
+            binding.contactsRecyclerView.animation = AnimationUtils.loadAnimation(this.context, R.anim.fade_in)
         }
     }
 }

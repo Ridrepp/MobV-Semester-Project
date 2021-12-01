@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
@@ -48,8 +49,10 @@ class RegisterFragment : Fragment() {
             lifecycleScope.launch {
                 registerViewModel.generateKeyPair()
             }
+            binding.publicKeyText.animation = AnimationUtils.loadAnimation(this.context, R.anim.fade_in)
+            binding.privateKeyText.animation = AnimationUtils.loadAnimation(this.context, R.anim.fade_in)
             binding.publicKeyTextView.visibility = View.VISIBLE
-            binding.privateKeTextView.visibility = View.VISIBLE
+            binding.privateKeyTextView.visibility = View.VISIBLE
             binding.confirmRegister.isEnabled = true
         }
 
